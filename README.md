@@ -55,3 +55,7 @@ Scores d'embedding (nomic-embed-text-v1.5)
 | 0.65–0.75    | proche                 |
 | 0.50–0.65    | relation faible        |
 | < 0.50       | probablement différent |
+
+# TODO
+
+- [ ] Remove aliases ? 

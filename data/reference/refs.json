@@ -1,0 +1,1804 @@
+[
+  {
+    "ref_id": "ref_1",
+    "name": "Alcohol content",
+    "units": [
+      "%v/v",
+      "g/l eq H2SO4",
+      "pH",
+      "meq/l",
+      "S3_5_7",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Alcohol_NIRS_analyser",
+      "g/l eq H2SO4",
+      "g/l eq H2SO4",
+      "pH",
+      "meq/l",
+      "pH",
+      "S3_5_7",
+      "g/l eq H2SO4",
+      "meq/l",
+      "S1_9_by2",
+      "pH",
+      "g/l eq H2SO4"
+    ],
+    "description": "Alcohol content|Titratable acidity of the berries (g/l H2SO4)|Berry tiratable acidity (manual titration, g/l H2SO4)|Berry pH|Titratable acidity in the berries (meq/l)|Must pH|Must pH, OIV:508|Must titratable acidity (eq g/l H2SO4)|Must Titratable acidity|Total acid content of must, OIV:506|Wine pH|Titratable acidity of the wine (g/l eq H2SO4)",
+    "aliases": [
+      "ALC_C",
+      "BER_TA_g",
+      "BER_TA_man_g",
+      "BERRY_pH",
+      "BERRY_TA_meq",
+      "MUST_pH",
+      "MUST_pH_OIV_508",
+      "MUST_TA_H2SO4",
+      "MUST_TA_meq",
+      "MUST_TA_OIV_506",
+      "WINE_pH",
+      "WINE_TA_gH2SO4"
+    ]
+  },
+  {
+    "ref_id": "ref_2",
+    "name": "Potassium concentration",
+    "units": [
+      "mg/l",
+      "g/100g"
+    ],
+    "methods": [
+      "HPLC ion exchange",
+      "mg/l",
+      "mg/l",
+      "g/100g",
+      "mg/l"
+    ],
+    "description": "Potassium concentration of the berries (IC-HPLC, mg/l)|Potassium concentration in the berries (flame spec., mg/l)|Potassium concentration in green berries (IC-HPLC, mg/l)|Must Potassium concentration (flame spec.)|Potassium concentration of the must (IC-HPLC, mg/l)|Potassium concentration in petioles (ICP-AES, g/100g)|Wine Potassium concentration",
+    "aliases": [
+      "BER_K_HPLC",
+      "BERRY_K",
+      "GBER_K",
+      "MUST_K",
+      "MUST_K_IC",
+      "PET_K",
+      "WINE_K"
+    ]
+  },
+  {
+    "ref_id": "ref_3",
+    "name": "malic acid concentration",
+    "units": [
+      "g/l",
+      "meq/l"
+    ],
+    "methods": [
+      "Mal_Enzymatic",
+      "g/l",
+      "g/l",
+      "g/l",
+      "meq/l",
+      "g/l",
+      "g/l",
+      "g/l"
+    ],
+    "description": "Malic acid concentration of the berries (Enzym., g/l)|Malic acid concentration of the berries (HPLC, g/l)|Tartaric acid concentration in the berries (Metav.., g/l)|Tartaric acid concentration in the berries (HPLC, g/l)|Malic acid concentration in the berries (Enzym., meq/l)|Tartaric acid concentration in the berries (Metavan., meq/l)|Malic acid concentration in green berries (Enzym., g/l)|Malic acid concentration of the must (Cap. electro., g/l)|Malic acid concentration of the must (Enzym., g/l)|Malic acid concentration of the must (HPLC, g/l)|Must Malic acid concentration|Wine Malic acid concentration|Malic acid concentration in the wine (Cap. electro., g/l)",
+    "aliases": [
+      "BER_MAL_g",
+      "BER_MAL_HPLC",
+      "BER_TART_g",
+      "BER_TART_HPLC_g",
+      "BERRY_MAL_meq",
+      "BERRY_TART_meq",
+      "GBER_MAL_ENZ_g",
+      "MUST_MAL_CapI_g",
+      "MUST_MAL_g",
+      "MUST_MAL_HPLC_g",
+      "MUST_MAL_meq",
+      "WINE_MAL",
+      "WINE_MAL_CapE_g"
+    ]
+  },
+  {
+    "ref_id": "ref_4",
+    "name": "Sour rot",
+    "units": [
+      "S1_9",
+      "%"
+    ],
+    "methods": [
+      "Visual rating",
+      "%"
+    ],
+    "description": "Berry sour rot estimation (1 to 9 scale)|Percentage of berries with sour rot",
+    "aliases": [
+      "BER_SOUR_ROT_1_9",
+      "BER_SOUR_TOT_PC"
+    ]
+  },
+  {
+    "ref_id": "ref_5",
+    "name": "Anthocyanins content",
+    "units": [
+      "mg/kg",
+      "S1_4",
+      "S1_9_by2",
+      "mg/l"
+    ],
+    "methods": [
+      "SPE-GC-MS",
+      "S1_4",
+      "S1_9_by2",
+      "mg/l",
+      "mg/l"
+    ],
+    "description": "Berry Anthocyanins content|Shoot: area of the anthocyanin coloration on bud scales|Shoot: intensity of anthocyanin coloration on bud scales|Must Anthocyanins content|Wine Anthocyanins content",
+    "aliases": [
+      "BERRY_ANTHO",
+      "MORPHO_OIV_015-1",
+      "MORPHO_OIV_015-2",
+      "MUST_ANTHO",
+      "WINE_ANTHO"
+    ]
+  },
+  {
+    "ref_id": "ref_6",
+    "name": "calcium concentration",
+    "units": [
+      "mg/l",
+      "g/100g"
+    ],
+    "methods": [
+      "HPLC ion exchange",
+      "mg/l",
+      "g/100g",
+      "mg/l"
+    ],
+    "description": "Berry Calcium concentration (HPLC mg/l)|Calcium concentration in the must (atomic absoption, mg/l)|Calcium concentration in petioles (ICP-AES, g/100g)|Wine: calcium concentration",
+    "aliases": [
+      "BERRY_Ca_HPLC",
+      "MUST_CALCIUM",
+      "PET_Ca_ICP",
+      "WINE_CALCIUM"
+    ]
+  },
+  {
+    "ref_id": "ref_7",
+    "name": "Total phenolic content",
+    "units": [
+      "Optical density"
+    ],
+    "methods": [
+      "Spectrophotometer_Optical_density"
+    ],
+    "description": "Berry Total Phenolic Content (DO 280)|Must Total Phenolic Content (DO 280)|Wine Total Phenolic Content (DO 280)",
+    "aliases": [
+      "BERRY_DO280",
+      "MUST_DO280",
+      "WINE_DO280"
+    ]
+  },
+  {
+    "ref_id": "ref_8",
+    "name": "Magnesium concentration",
+    "units": [
+      "mg/l",
+      "g/100g"
+    ],
+    "methods": [
+      "HPLC ion exchange",
+      "g/100g"
+    ],
+    "description": "Berry Magnesium concentration (HPLC mg/l)|Magnesium concentration in petioles (ICP-AES, g/100g)",
+    "aliases": [
+      "BERRY_Mg_HPLC",
+      "PET_Mg"
+    ]
+  },
+  {
+    "ref_id": "ref_9",
+    "name": "nitrogen content (amino acids)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Nitrogen (amino ac.) - colorimetric"
+    ],
+    "description": "Berry Nitrogen content (amino ac.,col, mg/l)",
+    "aliases": [
+      "BERRY_N_AA"
+    ]
+  },
+  {
+    "ref_id": "ref_10",
+    "name": "Nitrogen content (ammoniacal)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Nitrogen (ammoniacal) - enzymatic"
+    ],
+    "description": "Berry nitrogen content (ammoniacal, enz. mg/l)|Nitrogen content (ammoniacal) of the must",
+    "aliases": [
+      "BERRY_N_NH4",
+      "MUST_N_NH4"
+    ]
+  },
+  {
+    "ref_id": "ref_11",
+    "name": "Nitrogen content (total)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Total assimilable nitrogen (sum of NH4 and AA)"
+    ],
+    "description": "Berry nitrogen content (sum of N-NH4 and N-amino ac.)",
+    "aliases": [
+      "BERRY_N_NH4&AA"
+    ]
+  },
+  {
+    "ref_id": "ref_12",
+    "name": "Ammonium concentration",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "HPLC ion exchange"
+    ],
+    "description": "Berry Ammonium concentration (HPLC mg/l)",
+    "aliases": [
+      "BERRY_NH4"
+    ]
+  },
+  {
+    "ref_id": "ref_13",
+    "name": "Sugar concentration",
+    "units": [
+      "g/l",
+      "mg/l",
+      "S1_9_by2",
+      "degreeBrix"
+    ],
+    "methods": [
+      "Sug_refracto",
+      "mg/l",
+      "S1_9_by2",
+      "g/l"
+    ],
+    "description": "Berry Sugar concentration (g/l)|Glucose and fructose concentration|Must Sugar concentration|Sugar content of must OIV descriptor, OIV:505|Total soluble solids|Residual sugar concentration",
+    "aliases": [
+      "BERRY_SUG_g",
+      "GLUFRU",
+      "MUST_SUG_g",
+      "MUST_SUG_OIV_505",
+      "TSS",
+      "WINE_RES_SUG"
+    ]
+  },
+  {
+    "ref_id": "ref_14",
+    "name": "Alpha-terpineol concentration",
+    "units": [
+      "microg/kg",
+      "microg/l"
+    ],
+    "methods": [
+      "SPE-GC-MS"
+    ],
+    "description": "Concentrations of free and bound alpha-terpineol in the berries, AlphaTerp_Tot_Berry|Concentrations of free and bound citronellol in the berries, Citronellol_Tot_Berry|Concentrations of free and bound geraniol in the berries, Geraniol_Tot_Berry|Concentrations of free and bound linalool in the berries, Linalool_Tot_Berry|Concentrations of free and bound nerol in the berries, Nerol_Tot_Berry|Must Concentration of bound terpenols|Must Concentration of free terpenols|Must Concentration of free and bound terpenols|Concentration of bound terpenols in the pulp|Concentration of free terpenols in the pulp|Concentration of free and bound terpenols in the pulp|Concentration of bound terpenols in the skins|Concentration of free terpenols in the skins|Concentration of free and bound terpenols in the skins|Wine Concentration of bound terpenols|Wine Concentration of free terpenols|Wine Concentration of free and bound terpenols",
+    "aliases": [
+      "BERRY_TOTATERP",
+      "BERRY_TOTCITRO",
+      "BERRY_TOTGERAN",
+      "BERRY_TOTLIN",
+      "BERRY_TOTNER",
+      "MUST_BTERP",
+      "MUST_FTERP",
+      "MUST_TOTTERP",
+      "PULP_BTERP",
+      "PULP_FTREP",
+      "PULP_TOTTERP",
+      "SKIN_BTERP",
+      "SKIN_FTERP",
+      "SKIN_TOTTERP",
+      "WINE_BTERP",
+      "WINE_FTERP",
+      "WINE_TOTTERP"
+    ]
+  },
+  {
+    "ref_id": "ref_15",
+    "name": "Percentage destroyed by Black rot",
+    "units": [
+      "%"
+    ],
+    "methods": [
+      "Visual_percentage"
+    ],
+    "description": "Percentage of berries destroyed by Black rot",
+    "aliases": [
+      "BLACKR_BER_PC"
+    ]
+  },
+  {
+    "ref_id": "ref_16",
+    "name": "Resistance to Black rot",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Visual rating - OIV protocol"
+    ],
+    "description": "Resistance to Black rot on leaves (1-9 scale OIV type)",
+    "aliases": [
+      "BLACKROT_RESIST_1_9"
+    ]
+  },
+  {
+    "ref_id": "ref_17",
+    "name": "Percentage with Botrytis",
+    "units": [
+      "%",
+      "S3_5_9",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Visual_percentage",
+      "S3_5_9",
+      "S1_9_by2",
+      "S1_9_by2"
+    ],
+    "description": "Percentage of berries with grey rot (Botryrtis)|Cluster: degree of resistance to Botrytis|Leaf: degree of resistance to Botrytis|Leaf: degree of resistance to Botrytis (laboratory analysis)|Percentage of berries with noble rot",
+    "aliases": [
+      "BOTRY_BER_PC",
+      "BOTRY_CLUST_OIV_459",
+      "BOTRY_LEAF_OIV_458",
+      "BOTRYL_LEAFLAB_OIV",
+      "NOBROT_BER_PC"
+    ]
+  },
+  {
+    "ref_id": "ref_18",
+    "name": "Budbreak",
+    "units": [
+      "Calendar date",
+      "S1_9_by2",
+      "julian day",
+      "Degree.days",
+      "day/Chasselas",
+      "%"
+    ],
+    "methods": [
+      "Stage_Interpolation",
+      "S1_9_by2",
+      "Degree.days",
+      "day/Chasselas",
+      "%"
+    ],
+    "description": "Budbreak date (50%)|Time of bud burst|Day of Year Budbreak (50%)|Heat sums with Tmax, base 20?C since 15 February|Budbreak date (50%) relative to Chasselas|Percentage of sprouted buds",
+    "aliases": [
+      "BUD_DATE",
+      "BUDB_OIV_301",
+      "DOY_BUD",
+      "HS_Tmax_B02_15FB",
+      "MI-BUD-relativ",
+      "PER_SBU"
+    ]
+  },
+  {
+    "ref_id": "ref_19",
+    "name": "Yield",
+    "units": [
+      "S1_9_by2",
+      "l/kg",
+      "S3_5_7"
+    ],
+    "methods": [
+      "OIV:551",
+      "l/kg",
+      "S3_5_7",
+      "S1_9_by2"
+    ],
+    "description": "Rootstock: yield of canes/ha, OIV:551|Must yield|Must yield, OIV:233|Yield per m2, OIV:504",
+    "aliases": [
+      "CANES_Y_OIV_551",
+      "MUST_Y",
+      "MUST_Y_OIV_233",
+      "YIELD_OIV_504"
+    ]
+  },
+  {
+    "ref_id": "ref_20",
+    "name": "Percentage colored",
+    "units": [
+      "%"
+    ],
+    "methods": [
+      "Visual_percentage",
+      "%"
+    ],
+    "description": "Percentage of colored berries|Percentage of fruit-set",
+    "aliases": [
+      "COL_BER_PC",
+      "FRUITSET_%"
+    ]
+  },
+  {
+    "ref_id": "ref_21",
+    "name": "HR necrosis quantification",
+    "units": [
+      "S1_5",
+      "S1_10",
+      "%",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "DM_HRnecrosis",
+      "S1_5",
+      "S1_10",
+      "%",
+      "%",
+      "S1_9_by2",
+      "S1_9_by2",
+      "%",
+      "S1_9_by2"
+    ],
+    "description": "Quantification of HR necrosis after DM inoculation|DM rating  on leaf disks (1-5 scale)|DM rating on the most infected leaves (1-10 scale)|Percentage of leaf disk coverd with downy mildew sporulation (Divilov)|Percentage of leaf disk coverd with downy mildew sporulation (Perssotti)|Cluster: degree of resistance to Plasmopara|Leaf: degree of resistance to Plasmopara|Surface of foliage attacked by Downy Mildew|Leaf: degree of resistance to Plasmopara (leaf disc test), OIV:452-1",
+    "aliases": [
+      "DM_HRnecrosis",
+      "DM_SCORE_DISK",
+      "DM_SCORE_VINEYARD",
+      "DM_SPOR%DISK_DIVILOV",
+      "DM_SPOR%DISK_PERESSOTTI",
+      "PM_CLUS_OIV_453",
+      "PM_LEAF_OIV_452",
+      "PM_LEAF_PC",
+      "PM_LEAFDISK_OIV_452-1"
+    ]
+  },
+  {
+    "ref_id": "ref_22",
+    "name": "Flowering",
+    "units": [
+      "julian day",
+      "Calendar date",
+      "S1_9_by2",
+      "Degree.days",
+      "day/Chasselas",
+      "%"
+    ],
+    "methods": [
+      "Stage_Interpolation",
+      "S1_9_by2",
+      "Degree.days",
+      "day/Chasselas",
+      "S1_9_by2",
+      "%"
+    ],
+    "description": "Day of Year Flowering (50%)|Flowering date (50%)|Flowering end|Time of full bloom|Flowering start|Heat sums with Tmax, base 10?C between budbreak and flowering|Flowering date (50%) relative to Chasselas|Berry: bloom|Percentage of open flowers",
+    "aliases": [
+      "DOY_FLO",
+      "FLO_50",
+      "FLO_END",
+      "FLO_OIV_302",
+      "FLO_START",
+      "HS_Tmax_B10_BudFlo",
+      "MI-FLO-relativ",
+      "MORPHO_OIV_227",
+      "OPEN_FLO_PC"
+    ]
+  },
+  {
+    "ref_id": "ref_23",
+    "name": "Veraison",
+    "units": [
+      "julian day",
+      "Degree.days",
+      "week/Chasselas",
+      "%",
+      "Calendar date",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Stage_Interpolation",
+      "Degree.days",
+      "week/Chasselas",
+      "%",
+      "S1_9_by2"
+    ],
+    "description": "Day of Year Veraison (50%)|Heat sums with Tmax, base 6?C between flowering and v?raison|Veraison time (50%) relative to Chasselas|Percentage of soft berries|Veraison date (50%), Time of beginning of berry ripening (veraison)",
+    "aliases": [
+      "DOY_VER",
+      "HS_Tmax_B06_FloVer",
+      "MI-VER-relativ",
+      "SOFT_BER_PC",
+      "VER_50",
+      "VER_OIV_303"
+    ]
+  },
+  {
+    "ref_id": "ref_24",
+    "name": "Resistance to Eutypa dieback",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:460"
+    ],
+    "description": "Degree of resistance to Eutypa dieback (laboratory analysis)",
+    "aliases": [
+      "EUTYP_OIV_460"
+    ]
+  },
+  {
+    "ref_id": "ref_25",
+    "name": "Area",
+    "units": [
+      "m2/m2",
+      "%",
+      "per plant"
+    ],
+    "methods": [
+      "Geometric_ExposedLeafArea",
+      "%",
+      "m2/m2",
+      "per plant"
+    ],
+    "description": "Exposed leaf area per m2 of soil|Foliage coverage (% green pixels on a digital picture)|Leaf area per m2 of soil|Leaf area per plant",
+    "aliases": [
+      "EXP_LA_M2",
+      "FOL_COVER_%",
+      "LEAF_A_M2",
+      "LEAF_A_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_26",
+    "name": "Number per shoot",
+    "units": [
+      "per shoot",
+      "S1_4",
+      "Count",
+      "S1_5_9",
+      "/m2",
+      "per plant"
+    ],
+    "methods": [
+      "Manual counting",
+      "S1_4",
+      "Count",
+      "S1_5_9"
+    ],
+    "description": "Number of inflorescences per shoot (all kinds of shoots)|Number of inflorescences per non-count position|Number of inflorescences per shoot, OIV:153|Total number of inflorescences/number of primary shoots|Number of inflorescences per primary shoot|Number of inflorescences per secundary shoot|Number of inflorescences per shoot on spurs|Number of leaves per shoot|Shoot: fertility of basal buds (buds 1-3)|Number of clusters per m2|Number of clusters per plant|Number of inflorescences (All) per m2|Number of inflorescences per plant|Number of inflorescences on primary shoots per m2|Number of inflorescences on primary shoots per plant|Number of inflorescences on secondary shoots per m2|Number of inflorescences on secundary shoots per plant|Number of inflorescences on non count positions per m2|Number of inflorescences on non-count positions per plant|Nb inflo. on spurs per m2|Number of inflorescences on spurs per plant|Number of non-count positions shoots per m2|Number of shoots (all) per m2|Total number of shoots per plant|Number of primary shoots per m2|Number of primary shoots per plant|Number of secundary shoots per m2|Number of secundary shoots per plant|Nb shoots on spurs per m2",
+    "aliases": [
+      "FERT_GLOB",
+      "FERT_NCP",
+      "FERT_OIV_153",
+      "FERT_PRIM",
+      "FERT_SHOOT_I",
+      "FERT_SHOOT_II",
+      "FERT_SPURS",
+      "LEAV_NB_SHOOT",
+      "MORPHO_OIV_155",
+      "NB_CLUST_M2",
+      "NB_CLUST_PLANT",
+      "NB_INFLO_ALL_M2",
+      "NB_INFLO_ALL_PLANT",
+      "NB_INFLO_I_M2",
+      "NB_INFLO_I_PLANT",
+      "NB_INFLO_II_M2",
+      "NB_INFLO_II_PLANT",
+      "NB_INFLO_NCP_M2",
+      "NB_INFLO_NCP_PLANT",
+      "NB_INFLO_SPURS_M2",
+      "NB_INFLO_SPURS_PLANT",
+      "NB_NCP_M2",
+      "NB_NCP_PLANT",
+      "NB_SHOOT_ALL_M2",
+      "NB_SHOOT_ALL_PLANT",
+      "NB_SHOOT_I_M2",
+      "NB_SHOOT_I_PLANT",
+      "NB_SHOOT_II_M2",
+      "NB_SHOOT_II_PLANT",
+      "NB_SHOOTS_SPURS_M2",
+      "NB_SHOOTS_SPURS_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_27",
+    "name": "Percentage of berry set",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:501"
+    ],
+    "description": "Percentage of berry set, OIV:501",
+    "aliases": [
+      "FRUITSET_OIV_501"
+    ]
+  },
+  {
+    "ref_id": "ref_28",
+    "name": "Nitrogen content (N-NH4 and N-amino acids)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Total assimilable nitrogen (sum of NH4 and AA)"
+    ],
+    "description": "Green berry nitrogen content (sum of N-NH4 and N-amino ac.(HPLC mg/l)",
+    "aliases": [
+      "GBER_N_NH4&AA"
+    ]
+  },
+  {
+    "ref_id": "ref_29",
+    "name": "Nitrogen concentration(ammoniacal)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Nitrogen (ammoniacal) - enzymatic"
+    ],
+    "description": "Nitrogen concentration in green berries (Ammoniacal, mg/l)",
+    "aliases": [
+      "GBER_NNH4"
+    ]
+  },
+  {
+    "ref_id": "ref_30",
+    "name": "pH",
+    "units": [
+      "pH"
+    ],
+    "methods": [
+      "pH_meter"
+    ],
+    "description": "pH of green berries",
+    "aliases": [
+      "GBER_pH"
+    ]
+  },
+  {
+    "ref_id": "ref_31",
+    "name": "tartaric acid concentration",
+    "units": [
+      "g/l",
+      "meq/l"
+    ],
+    "methods": [
+      "Tart_metavanadate",
+      "g/l",
+      "g/l",
+      "g/l"
+    ],
+    "description": "Tartaric acid concentration in green berries (Metav., g/l)|Tartaric acid concentration in the must (Cap. electro., g/l)|Tartaric acid concentration of the must (Metav.,g/l)|Tartaric acid concentration of the must (HPLC, g/l)|Must Tartaric acid concentration|Wine Tartaric acid concentration|Tartaric acid concentration in the wine (Cap. electro., g/l)",
+    "aliases": [
+      "GBERT_TART_COL_g",
+      "MUST_TART_CapI_g",
+      "MUST_TART_g",
+      "MUST_TART_HPLC_g",
+      "MUST_TART_meq",
+      "WINE_TART",
+      "WINE_TART_CapE_g"
+    ]
+  },
+  {
+    "ref_id": "ref_32",
+    "name": "Nitrogen concentration (amino acids)",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Nitrogen (amino ac.) - colorimetric"
+    ],
+    "description": "Nitrogen concentration in green berries (Amino ac., mg/l)|Must nitrogen content (amino acids, col., mg/l)",
+    "aliases": [
+      "GNER_N_AMAC",
+      "MUST_N_AA"
+    ]
+  },
+  {
+    "ref_id": "ref_33",
+    "name": "Harvest",
+    "units": [
+      "Calendar date",
+      "julian day"
+    ],
+    "methods": [
+      "Direct record"
+    ],
+    "description": "Harvest date (calendar date)|Harvest date (Day of year)",
+    "aliases": [
+      "HARVEST_DATE",
+      "HARVEST_DOY"
+    ]
+  },
+  {
+    "ref_id": "ref_34",
+    "name": "Length",
+    "units": [
+      "cm",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Ruler_measurement",
+      "S1_9_by2"
+    ],
+    "description": "Internode length|Length of internodes",
+    "aliases": [
+      "INT_L",
+      "MORPHO_OIV_353"
+    ]
+  },
+  {
+    "ref_id": "ref_35",
+    "name": "Diameter",
+    "units": [
+      "S1_9_by2",
+      "mm"
+    ],
+    "methods": [
+      "OIV:354",
+      "mm"
+    ],
+    "description": "Diameter of internodes, OIV:354|Shoot diameter",
+    "aliases": [
+      "INTDIAM_OIV_354",
+      "SHOOT_DIAM"
+    ]
+  },
+  {
+    "ref_id": "ref_36",
+    "name": "anthracnose",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "Visual rating - VATE/SI protocol"
+    ],
+    "description": "Anthracnose on leaves (VATE/SI protocol, 1-3 scale)",
+    "aliases": [
+      "LEAF_ANTHRAC"
+    ]
+  },
+  {
+    "ref_id": "ref_37",
+    "name": "black rot",
+    "units": [
+      "S1_9"
+    ],
+    "methods": [
+      "Visual rating - VATE/SI protocol"
+    ],
+    "description": "Intensity of Black rot on leaves (1 to 9 scale)",
+    "aliases": [
+      "LEAF_BLACKROT_1_9"
+    ]
+  },
+  {
+    "ref_id": "ref_38",
+    "name": "erinose",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "Visual rating - VATE/SI protocol"
+    ],
+    "description": "Erinose on leaves (VATE/SI protocol, 1-3 scale)",
+    "aliases": [
+      "LEAF_ERINOSE"
+    ]
+  },
+  {
+    "ref_id": "ref_39",
+    "name": "LiDAR apparent volume",
+    "units": [
+      "l"
+    ],
+    "methods": [
+      "Number of LiDAR impacts x voxel volume"
+    ],
+    "description": "LiDAR apparent canopy volume (L) |LiDAR apparent wood volume (L) ",
+    "aliases": [
+      "LiDAR_ACV_L",
+      "LiDAR_AWV_L"
+    ]
+  },
+  {
+    "ref_id": "ref_40",
+    "name": "Time of full maturity",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:304"
+    ],
+    "description": "Time of physiological stage of full maturity of the berry",
+    "aliases": [
+      "MAT_OIV_304"
+    ]
+  },
+  {
+    "ref_id": "ref_41",
+    "name": "Time of maturity",
+    "units": [
+      "week/Chasselas"
+    ],
+    "methods": [
+      "Relative to chasselas"
+    ],
+    "description": "Physiological maturity time relative to Chasselas",
+    "aliases": [
+      "MATUR-relativ"
+    ]
+  },
+  {
+    "ref_id": "ref_42",
+    "name": "aperture of tip",
+    "units": [
+      "S1_5_by2",
+      "S1_9_by2",
+      "S1_3",
+      "S1_2:OIV222",
+      "S1_4",
+      "S1_5",
+      "S3_5_7",
+      "S1_9",
+      "S1_5_7",
+      "S1_10:OIV223"
+    ],
+    "methods": [
+      "OIV:001",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_3",
+      "S1_3",
+      "S1_3",
+      "S1_3",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_2:OIV222",
+      "S1_9_by2",
+      "S1_4",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_5",
+      "S1_5",
+      "S3_5_7",
+      "S1_5",
+      "S1_5",
+      "S1_9_by2",
+      "S1_9",
+      "S1_5",
+      "S1_9_by2",
+      "S1_5",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_3",
+      "S1_9",
+      "S1_3",
+      "S1_5",
+      "S1_3",
+      "S1_9",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9",
+      "S1_9",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_3",
+      "S1_3",
+      "S1_4",
+      "S1_9",
+      "S1_9",
+      "S1_9",
+      "S1_4",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_5_7",
+      "S1_3",
+      "S1_5",
+      "S1_9_by2",
+      "S1_2:OIV222",
+      "S1_10:OIV223",
+      "S1_9_by2",
+      "S1_2:OIV222",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_3",
+      "S1_3",
+      "S1_9",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2",
+      "S1_9_by2"
+    ],
+    "description": "Young Shoot: aperture of tip|Young Shoot: intensity of anthocyanin coloration on prostrate hairs of tip|Young Shoot: density of prostrate hairs on tip|Young Shoot: density of erect hairs on tip|Shoot: attitude (before tying)|Shoot: color of dorsal side of internodes|Shoot: color of ventral side of internodes|Shoot: color of dorsal side of nodes|Shoot: color of ventral side of nodes|Shoot: density of erect hairs on nodes|Shoot: density of erect hairs on internodes|Shoot: density of prostrate hairs on nodes|Shoot: density of prostrate hairs on internodes|Shoot: number of consecutive tendrils|Shoot: length of tendrils|Young leaf: color of the upper side of blade (4th leaf)|Young leaf: density of prostrate hairs between main veins on lower side of blade (4th leaf)|Young leaf: density of erect hairs between main veins on lower side of blade (4th leaf)|Young leaf: density of prostrate hairs on main veins on lower side of blade (4th leaf)|Young leaf: density of erect hairs on main veins on lower side of blade|Mature leaf: size of blade|Mature leaf: shape of blade|Mature leaf: number of lobes|Mature leaf: color of the upper side of blade|Mature leaf: area of anthocyanin coloration of main veins on upper side of blade|Mature leaf: area of anthocyanin coloration of main veins on lower side of blade|Mature leaf: goffering of blade|Mature leaf: undulation of blade between main and lateral veins|Mature leaf: profile of blade in cross section|Mature leaf: blistering of upper side of blade|Mature leaf: shape of teeth|Mature leaf: size of teeth in relation to blade size|Mature leaf: length of teeth compared with their width|Mature leaf: degree of opening / overlapping of petiole sinus|Mature leaf: shape of base of petiole sinus|Mature leaf: teeth in the petiole sinus|Mature leaf: petiole sinus base limited by veins|Mature leaf: degree of opening / overlapping of upper lateral sinus|Mature leaf: shape of base of upper lateral sinuses|Mature leaf: teeth in the upper lateral sinuses|Mature leaf: density of prostrate hairs between the main veins on lower side of blade|Mature leaf: density of erect hairs between the main veins on lower side of blade|Mature leaf: density of prostrate hairs on main veins on lower side of blade|Mature leaf: density of erect hairs on main veins on lower side of blade|Mature leaf: prostrate hairs on main veins on upper side of blade|Mature leaf: erect hairs on main veins on upper side of blade|Mature leaf: density of prostrate hairs on petiole|Mature leaf: density of erect hairs on petiole|Mature leaf: length of petiole compared to length of middle vein|Mature leaf: depth of upper lateral sinuses|Woody shoot: cross section|Woody shoot: structure of surface|Woody shoot: main color|Woody shoot: lenticels|Woody shoot: erect hairs on nodes|Woody shoot: erect hairs on internodes|Flower: sexual organs|Bunch: width|Bunch: density|Bunch: length of peduncle of primary bunch|Bunch: lignification of peduncle|Bunch: shape|Bunch: number of wings of the primary bunch|Berry: width|Berry: uniformity of size|Berry: shape|Berry: thickness of skin|Berry: hilum|Berry: intensity of the anthocyanin coloration of flesh|Berry: length of pedicel|Berry: ease of detachment from pedicel|Berry: formation of seeds|Berry: transversal ridges on dorsal side of seeds|Growth of axillary shoots|Rootstock: adventitious root formation|Mature leaf: length of vein N1|Mature leaf: length of vein N2|Mature leaf: length of vein N3|Mature leaf: length of vein N4|Mature leaf: length petiole sinus to upper lateral leaf sinus|Mature leaf: length petiole sinus to lower lateral leaf sinus|Mature leaf: angle between N1 and N2 (Code Nos OIV 601 and OIV 602) measured at the first ramification|Mature leaf: angle between N2 and N3 (Code Nos OIV 601 and OIV 602) measured at the first ramification|Mature leaf: angle between N3 and N4 (Code Nos OIV 601 and OIV 602) measured at the first ramification|Mature leaf: angle between N3 and the tangent between petiole point and the tooth tip of N5, OIV:610|Mature leaf: length of vein N5|Mature leaf: length of tooth N2|Mature leaf: width of tooth N2|Mature leaf: length of tooth N4|Mature leaf: width of tooth N4|Mature leaf: number of teeth between the tooth tip of N2 and the tooth tip of the first secondary vein of N2 including the limits|Mature leaf: length between the tooth tip of N2 and the tooth tip of the first secondary vein of N2|Mature leaf: opening/overlapping of petiole sinus",
+    "aliases": [
+      "MORPHO_OIV_001",
+      "MORPHO_OIV_003",
+      "MORPHO_OIV_004",
+      "MORPHO_OIV_005",
+      "MORPHO_OIV_006",
+      "MORPHO_OIV_007",
+      "MORPHO_OIV_008",
+      "MORPHO_OIV_009",
+      "MORPHO_OIV_010",
+      "MORPHO_OIV_011",
+      "MORPHO_OIV_012",
+      "MORPHO_OIV_013",
+      "MORPHO_OIV_014",
+      "MORPHO_OIV_016",
+      "MORPHO_OIV_017",
+      "MORPHO_OIV_051",
+      "MORPHO_OIV_053",
+      "MORPHO_OIV_054",
+      "MORPHO_OIV_055",
+      "MORPHO_OIV_056",
+      "MORPHO_OIV_065",
+      "MORPHO_OIV_067",
+      "MORPHO_OIV_068",
+      "MORPHO_OIV_069",
+      "MORPHO_OIV_070",
+      "MORPHO_OIV_071",
+      "MORPHO_OIV_072",
+      "MORPHO_OIV_073",
+      "MORPHO_OIV_074",
+      "MORPHO_OIV_075",
+      "MORPHO_OIV_076",
+      "MORPHO_OIV_077",
+      "MORPHO_OIV_078",
+      "MORPHO_OIV_079",
+      "MORPHO_OIV_080",
+      "MORPHO_OIV_081-1",
+      "MORPHO_OIV_081-2",
+      "MORPHO_OIV_082",
+      "MORPHO_OIV_083-1",
+      "MORPHO_OIV_083-2",
+      "MORPHO_OIV_084",
+      "MORPHO_OIV_085",
+      "MORPHO_OIV_086",
+      "MORPHO_OIV_087",
+      "MORPHO_OIV_088",
+      "MORPHO_OIV_089",
+      "MORPHO_OIV_090",
+      "MORPHO_OIV_091",
+      "MORPHO_OIV_093",
+      "MORPHO_OIV_094",
+      "MORPHO_OIV_101",
+      "MORPHO_OIV_102",
+      "MORPHO_OIV_103",
+      "MORPHO_OIV_104",
+      "MORPHO_OIV_105",
+      "MORPHO_OIV_106",
+      "MORPHO_OIV_151",
+      "MORPHO_OIV_203",
+      "MORPHO_OIV_204",
+      "MORPHO_OIV_206",
+      "MORPHO_OIV_207",
+      "MORPHO_OIV_208",
+      "MORPHO_OIV_209",
+      "MORPHO_OIV_221",
+      "MORPHO_OIV_222",
+      "MORPHO_OIV_223",
+      "MORPHO_OIV_228",
+      "MORPHO_OIV_229",
+      "MORPHO_OIV_231",
+      "MORPHO_OIV_238",
+      "MORPHO_OIV_240",
+      "MORPHO_OIV_241",
+      "MORPHO_OIV_244",
+      "MORPHO_OIV_352",
+      "MORPHO_OIV_553",
+      "MORPHO_OIV_601",
+      "MORPHO_OIV_602",
+      "MORPHO_OIV_603",
+      "MORPHO_OIV_604",
+      "MORPHO_OIV_605",
+      "MORPHO_OIV_606",
+      "MORPHO_OIV_607",
+      "MORPHO_OIV_608",
+      "MORPHO_OIV_609",
+      "MORPHO_OIV_610",
+      "MORPHO_OIV_611",
+      "MORPHO_OIV_612",
+      "MORPHO_OIV_613",
+      "MORPHO_OIV_614",
+      "MORPHO_OIV_615",
+      "MORPHO_OIV_616",
+      "MORPHO_OIV_617",
+      "MORPHO_OIV_618"
+    ]
+  },
+  {
+    "ref_id": "ref_43",
+    "name": "distribution of anthocyanin coloration on prostrate hairs of tip",
+    "units": [
+      "S1_3",
+      "S1_6",
+      "S1_2:OIV222",
+      "Optical density"
+    ],
+    "methods": [
+      "OIV:002",
+      "S1_6",
+      "S1_2:OIV222",
+      "Optical density",
+      "Optical density",
+      "Optical density",
+      "Optical density",
+      "Optical density",
+      "Optical density"
+    ],
+    "description": "Young Shoot: distribution of anthocyanin coloration on prostrate hairs of tip|Berry: color of skin|Berry: uniformity of color of skin|Optical density at 420 nm of the must|Optical density at 520 nm of the must|Optical density at 620 nm of the must|Optical density at 420 nm of the wine|Optical density at 520 nm of the wine|Optical density at 620 nm of the wine",
+    "aliases": [
+      "MORPHO_OIV_002",
+      "MORPHO_OIV_225",
+      "MORPHO_OIV_226",
+      "MUST_DO420",
+      "MUST_DO520",
+      "MUST_DO620",
+      "WINE_DO420",
+      "WINE_DO520",
+      "WINE_DO620"
+    ]
+  },
+  {
+    "ref_id": "ref_44",
+    "name": "insertion of 1st inflorescence",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "OIV:152"
+    ],
+    "description": "Inflorescence: insertion of 1st inflorescence",
+    "aliases": [
+      "MORPHO_OIV_152"
+    ]
+  },
+  {
+    "ref_id": "ref_45",
+    "name": "Length (peduncle excluded)",
+    "units": [
+      "S1_9_by2",
+      "cm"
+    ],
+    "methods": [
+      "OIV:202",
+      "S1_9_by2",
+      "S1_9_by2",
+      "cm"
+    ],
+    "description": "Bunch: length (peduncle excluded)|Berry: length|Berry: length of seeds|Shoot length",
+    "aliases": [
+      "MORPHO_OIV_202",
+      "MORPHO_OIV_220",
+      "MORPHO_OIV_242",
+      "SHOOT_L"
+    ]
+  },
+  {
+    "ref_id": "ref_46",
+    "name": "juiciness of flesh",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "OIV:232"
+    ],
+    "description": "Berry: juiciness of flesh",
+    "aliases": [
+      "MORPHO_OIV_232"
+    ]
+  },
+  {
+    "ref_id": "ref_47",
+    "name": "firmness of flesh",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "OIV:235"
+    ],
+    "description": "Berry: firmness of flesh",
+    "aliases": [
+      "MORPHO_OIV_235"
+    ]
+  },
+  {
+    "ref_id": "ref_48",
+    "name": "particularity of flavor",
+    "units": [
+      "S1_5"
+    ],
+    "methods": [
+      "OIV:236"
+    ],
+    "description": "Berry: particularity of flavor",
+    "aliases": [
+      "MORPHO_OIV_236"
+    ]
+  },
+  {
+    "ref_id": "ref_49",
+    "name": "weight of seeds",
+    "units": [
+      "S1_9_by2",
+      "kg/m2",
+      "kg/plant",
+      "g",
+      "mg"
+    ],
+    "methods": [
+      "OIV:243",
+      "kg/m2",
+      "kg/plant",
+      "g",
+      "S1_9_by2",
+      "g",
+      "S1_9_by2",
+      "g",
+      "mg"
+    ],
+    "description": "Berry: weight of seeds|Pruning fresh weight per m2|Pruning fresh weight per plant|Single berry weight|Single berry weight, OIV:503|Cluster weight|Weight of a single bunch, OIV:502|Dry weight par shoot|Single seed weight",
+    "aliases": [
+      "MORPHO_OIV_243",
+      "PRUN_FW_M2",
+      "PRUN_FW_PLANT",
+      "SBER_W_g",
+      "SBER_W_OIV_503",
+      "SCLUST_W_G",
+      "SCLUST_W_OIV_502",
+      "SHOOT_DW",
+      "SSEEDW_g"
+    ]
+  },
+  {
+    "ref_id": "ref_50",
+    "name": "Formation of callus",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:552"
+    ],
+    "description": "Rootstock: formation of callus (upper end)",
+    "aliases": [
+      "MORPHO_OIV_552"
+    ]
+  },
+  {
+    "ref_id": "ref_51",
+    "name": "density",
+    "units": [
+      "g/l",
+      "Dimensionless"
+    ],
+    "methods": [
+      "Density - Volumetric mass density - electronic",
+      "Dimensionless"
+    ],
+    "description": "Density of the must (g/dm3)|NFI (Multiplex Research)",
+    "aliases": [
+      "MUST_DENSITY",
+      "NFI"
+    ]
+  },
+  {
+    "ref_id": "ref_52",
+    "name": "total nitrogen content",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Total assimilable nitrogen (sum of NH4 and AA)",
+      "mg/l"
+    ],
+    "description": "Nitrohen content of the must (sum of N-NH4 and N-amino ac.)|Total nitrogen content of the must (Dumas method, mg/l)",
+    "aliases": [
+      "MUST_N_AA&NH4",
+      "MUST_TOTAL_N_Dumas"
+    ]
+  },
+  {
+    "ref_id": "ref_53",
+    "name": "free SO2 concentration",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Free SO2 analysis (Ripper method)"
+    ],
+    "description": "Must: free SO2",
+    "aliases": [
+      "MUST_SO2_FREE"
+    ]
+  },
+  {
+    "ref_id": "ref_54",
+    "name": "total SO2 concentration",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Total SO2 analysis (Ripper method)"
+    ],
+    "description": "Must: total SO2",
+    "aliases": [
+      "MUST_SO2_TOT"
+    ]
+  },
+  {
+    "ref_id": "ref_55",
+    "name": "Turbidity",
+    "units": [
+      "NTU (nephelometric turbidity units)"
+    ],
+    "methods": [
+      "Turbidimetry"
+    ],
+    "description": "Turbidity of the must",
+    "aliases": [
+      "MUST_TURBID"
+    ]
+  },
+  {
+    "ref_id": "ref_56",
+    "name": "Number left after pruning per m2",
+    "units": [
+      "/m2"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of buds left after pruning per m2",
+    "aliases": [
+      "NB_BUDS_M2"
+    ]
+  },
+  {
+    "ref_id": "ref_57",
+    "name": "Number left after pruning per plant",
+    "units": [
+      "per plant"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of buds per plant left after pruning",
+    "aliases": [
+      "NB_BUDS_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_58",
+    "name": "Number per plant",
+    "units": [
+      "per plant"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of canes per plant",
+    "aliases": [
+      "NB_CANES_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_59",
+    "name": "Number per m2",
+    "units": [
+      "/m2"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of plants per m2",
+    "aliases": [
+      "NB_PLANT_M2"
+    ]
+  },
+  {
+    "ref_id": "ref_60",
+    "name": "Number of sprouted buds per m2",
+    "units": [
+      "/m2"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of sprouted buds per m2",
+    "aliases": [
+      "NB_SBUDS_M2"
+    ]
+  },
+  {
+    "ref_id": "ref_61",
+    "name": "Number of sprouted buds",
+    "units": [
+      "per plant"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of sprouted buds",
+    "aliases": [
+      "NB_SBUDS_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_62",
+    "name": "Nitrogen status",
+    "units": [
+      "Dimensionless"
+    ],
+    "methods": [
+      "Nitrogen Balance Index (Multiplex Research Force-A)"
+    ],
+    "description": "Nitrogen balance indes (NBI-R, Multiplex research)",
+    "aliases": [
+      "NBI-R"
+    ]
+  },
+  {
+    "ref_id": "ref_63",
+    "name": "NDVI",
+    "units": [
+      "Dimensionless"
+    ],
+    "methods": [
+      "NDVI (pedestrian Greenseeker)",
+      "Dimensionless",
+      "Dimensionless"
+    ],
+    "description": "NDVI (pedestrian)|NDVI calculated with remote images (proxidetection)|NDVI measured by a Greenseeker on a tractor",
+    "aliases": [
+      "NDVI_PED",
+      "NDVI_PROXI",
+      "NDVI_TRACTOR"
+    ]
+  },
+  {
+    "ref_id": "ref_64",
+    "name": "Node number",
+    "units": [
+      "Count"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Node number of the first tendril above the cotyledon",
+    "aliases": [
+      "NOD_TENDRIL_1"
+    ]
+  },
+  {
+    "ref_id": "ref_65",
+    "name": "Bore concentration",
+    "units": [
+      "mg/kg"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Bore concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_Bo_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_66",
+    "name": "Copper concentration",
+    "units": [
+      "mg/kg"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Copper concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_Cu_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_67",
+    "name": "Iron concentration",
+    "units": [
+      "mg/kg"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Iron concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_Fe_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_68",
+    "name": "Manganese concentration",
+    "units": [
+      "mg/kg"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Manganese concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_Mn_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_69",
+    "name": "Nitrogen concentration",
+    "units": [
+      "g/100g"
+    ],
+    "methods": [
+      "Total nitrogen (Dumas' method)"
+    ],
+    "description": "Nitrogen concentration in petioles (Dumas, g/100g)",
+    "aliases": [
+      "PET_N_Dumas"
+    ]
+  },
+  {
+    "ref_id": "ref_70",
+    "name": "Phosphorus concentration",
+    "units": [
+      "g/100g"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Phosporus concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_P_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_71",
+    "name": "Zinc concentration",
+    "units": [
+      "mg/kg"
+    ],
+    "methods": [
+      "ICP-AES"
+    ],
+    "description": "Zinc concentration in petioles (ICP-AES, mg/kg)",
+    "aliases": [
+      "PET_Zn_ICP"
+    ]
+  },
+  {
+    "ref_id": "ref_72",
+    "name": "Tolerance to Phylloxera",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:461",
+      "S1_9_by2"
+    ],
+    "description": "Degree of tolerance to Phylloxera (leaf)|Degree of tolerance to Phylloxera (root)",
+    "aliases": [
+      "PHYLLOX_LEAF_OIV_461",
+      "PHYLLOX_ROOT_OIV_462"
+    ]
+  },
+  {
+    "ref_id": "ref_73",
+    "name": "Susceptibility to Phylloxera",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "Visual rating - VATE/SI protocol"
+    ],
+    "description": "Susceptibility to Phylloxera (Leaves VATE/SI)",
+    "aliases": [
+      "PHYLLOX_LEAF_SUSCEP_VATE"
+    ]
+  },
+  {
+    "ref_id": "ref_74",
+    "name": "Percentage destroyed by Downy Mildew",
+    "units": [
+      "%"
+    ],
+    "methods": [
+      "Visual_percentage"
+    ],
+    "description": "Percentage of berries destroyed by Downy Mildew",
+    "aliases": [
+      "PM_BER_PC"
+    ]
+  },
+  {
+    "ref_id": "ref_75",
+    "name": "Resistance to chlorides",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:402"
+    ],
+    "description": "Resistance to chlorides (salt)  OIV:402",
+    "aliases": [
+      "RES_CL_OIV_402"
+    ]
+  },
+  {
+    "ref_id": "ref_76",
+    "name": "Resistance to drought",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:403"
+    ],
+    "description": "Resistance to drought  OIV:403",
+    "aliases": [
+      "RES_D_OIV_403"
+    ]
+  },
+  {
+    "ref_id": "ref_77",
+    "name": "Resistance to iron chlorosis",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:401"
+    ],
+    "description": "Resistance to iron chlorosis  OIV:401",
+    "aliases": [
+      "RES_IC_OIV_401"
+    ]
+  },
+  {
+    "ref_id": "ref_78",
+    "name": "Volume",
+    "units": [
+      "ml"
+    ],
+    "methods": [
+      "Berry_WaterVolume"
+    ],
+    "description": "Single berry volume (ml)|Single green berry volume (ml)",
+    "aliases": [
+      "SBER_VOL_mL",
+      "SGBER_VOL"
+    ]
+  },
+  {
+    "ref_id": "ref_79",
+    "name": "Number per berry",
+    "units": [
+      "Count"
+    ],
+    "methods": [
+      "Manual counting"
+    ],
+    "description": "Number of seeds per berry",
+    "aliases": [
+      "SEED_NB"
+    ]
+  },
+  {
+    "ref_id": "ref_80",
+    "name": "Autumn coloration",
+    "units": [
+      "S1_5:OIV_306",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:306",
+      "S1_9_by2"
+    ],
+    "description": "Autumn coloration of leaves|Time of beginning of wood maturity",
+    "aliases": [
+      "SENESC_OIV_306",
+      "WOODM_OIV_305"
+    ]
+  },
+  {
+    "ref_id": "ref_81",
+    "name": "Weight",
+    "units": [
+      "g",
+      "kg/plant"
+    ],
+    "methods": [
+      "Weight_balance"
+    ],
+    "description": "Single green berry weight (g)|Grapes_Weight",
+    "aliases": [
+      "SGBER_W_g",
+      "YIELD_PLANT"
+    ]
+  },
+  {
+    "ref_id": "ref_82",
+    "name": "excoriose",
+    "units": [
+      "S1_3"
+    ],
+    "methods": [
+      "Visual rating - VATE/SI protocol"
+    ],
+    "description": "Excoriose on shoots (VATE/SI protocol, 1-3 scale)",
+    "aliases": [
+      "SHOOT_EXCORIOSE"
+    ]
+  },
+  {
+    "ref_id": "ref_83",
+    "name": "Vigor of shoot growth",
+    "units": [
+      "S1_9_by2"
+    ],
+    "methods": [
+      "OIV:351"
+    ],
+    "description": "Vigor of shoot growth, OIV:351",
+    "aliases": [
+      "SHOOT_G_OIV_351"
+    ]
+  },
+  {
+    "ref_id": "ref_84",
+    "name": "Chlorophyll content",
+    "units": [
+      "Dimensionless"
+    ],
+    "methods": [
+      "Konica Minolta SPAD502"
+    ],
+    "description": "Chlorophyll content of the leaves (Konica Minolta SPAD 502)",
+    "aliases": [
+      "SPAD502"
+    ]
+  },
+  {
+    "ref_id": "ref_85",
+    "name": "Percentage with Powdery Mildew",
+    "units": [
+      "%",
+      "S1_9_by2"
+    ],
+    "methods": [
+      "Visual_percentage",
+      "S1_9_by2",
+      "S1_9_by2",
+      "%",
+      "S1_9_by2"
+    ],
+    "description": "Percentage of berries with Powdery Mildew|Cluster: degree of resistance to Oidium|Leaf: degree of resistance to Oidium|Surface of foliage attacked by Powdery Mildew|Leaf: degree of resistance to Oidium (leaf disc test), OIV:455-1",
+    "aliases": [
+      "UN_BER_PC",
+      "UN_CLUST_OIV_456",
+      "UN_LEAF_OIV_455",
+      "UN_LEAF_PC",
+      "UN_LEAFDISK_OIV_455-1"
+    ]
+  },
+  {
+    "ref_id": "ref_86",
+    "name": "acetic acid",
+    "units": [
+      "g/l"
+    ],
+    "methods": [
+      "Acetic acid: enzymatic method"
+    ],
+    "description": "Acetic acid concentration in the wine (Enzym., g/l)",
+    "aliases": [
+      "WINE_ACETIC"
+    ]
+  },
+  {
+    "ref_id": "ref_87",
+    "name": "lactic acid",
+    "units": [
+      "g/l"
+    ],
+    "methods": [
+      "Lactic acid: enzymatic method"
+    ],
+    "description": "Wine: Concentration of lactic acid (enz., g/l)",
+    "aliases": [
+      "WINE_LACT_Enz_g/l"
+    ]
+  },
+  {
+    "ref_id": "ref_88",
+    "name": "Protein stability",
+    "units": [
+      "NTU (nephelometric turbidity units)"
+    ],
+    "methods": [
+      "Turbidity after heat stress (protein stability)"
+    ],
+    "description": "Wine protein stability (heat test)",
+    "aliases": [
+      "WINE_PROT_STAB"
+    ]
+  },
+  {
+    "ref_id": "ref_89",
+    "name": "free SO2",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Free SO2 analysis (Ripper method)"
+    ],
+    "description": "Free SO2 concentration in the wine",
+    "aliases": [
+      "WINE_SO2_FREE"
+    ]
+  },
+  {
+    "ref_id": "ref_90",
+    "name": "total SO2",
+    "units": [
+      "mg/l"
+    ],
+    "methods": [
+      "Total SO2 analysis (Ripper method)"
+    ],
+    "description": "Total SO2 concentration in the wine",
+    "aliases": [
+      "WINE_SO2_TOT"
+    ]
+  },
+  {
+    "ref_id": "ref_91",
+    "name": "titratable acidity",
+    "units": [
+      "meq/l"
+    ],
+    "methods": [
+      "TA_AutomaticTitrator"
+    ],
+    "description": "Wine Titratable acidity",
+    "aliases": [
+      "WINE_TA"
+    ]
+  }
+]
