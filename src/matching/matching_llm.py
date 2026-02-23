@@ -35,7 +35,7 @@ Reference concepts:
 
 
 # Initialisation modèle LM Studio
-model = lms.llm("google/gemma-3-12b")
+model = lms.llm("openai/gpt-oss-20b")
 
 
 def align_variable(

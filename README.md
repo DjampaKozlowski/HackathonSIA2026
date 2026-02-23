@@ -59,3 +59,6 @@ Scores d'embedding (nomic-embed-text-v1.5)
 # TODO
 
 - [ ] Remove aliases ? 
+
+# Run API
+run : `uv run fastapi dev ./api.py`
