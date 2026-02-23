@@ -1,6 +1,9 @@
 import json
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
+from pydantic import ValidationError
+
+from ..classes import ReferenceConcept
 
 
 def read_referential_json(fpath: str | Path) -> Dict[str, Any]:
@@ -41,16 +44,93 @@ def parse_raw_referential(raw_dict: dict) -> dict:
     return {"count": len(results), "items": results}
 
 
-if __name__ == "__main__":
-    # Resolve the path relative to this file so the script can be
-    # run from any current working directory.
-    script_dir = Path(__file__).resolve().parent
-    data_path = script_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
-    print(f"Looking for referential file at: {data_path.resolve()}")
-    try:
-        res = read_referential_json(fpath=data_path)
-    except Exception as e:
-        print(f"Error reading referential JSON: {e}")
-    else:
-        parsed = parse_raw_referential(res)
-        print(f"Parsed {parsed.get('count', 0)} entries")
+def convert_entries_to_reference_concepts(entries: List[dict]) -> List[ReferenceConcept]:
+    """Convert raw referential entries into `ReferenceConcept` instances.
+
+    Mapping:
+      - ref_id: 'ref_<index>'
+      - name: item['name']
+      - units: [ item['unit']['name'] ] if present
+      - methods: [ item['method']['name'] ] if present
+      - description: item['alternative_name']
+      - aliases: []
+    """
+    concepts: List[ReferenceConcept] = []
+    for idx, item in enumerate(entries, start=1):
+        ref_id = f"ref_{idx}"
+        name = item.get("name") or ""
+
+        units: List[str] = []
+        unit = item.get("unit")
+        if isinstance(unit, dict):
+            u = unit.get("name")
+            if u:
+                units.append(u)
+
+        methods: List[str] = []
+        method = item.get("method")
+        if isinstance(method, dict):
+            m = method.get("name")
+            if m:
+                methods.append(m)
+
+        description = item.get("alternative_name") or item.get("description") or ""
+        aliases: List[str] = []
+
+        try:
+            rc = ReferenceConcept(
+                ref_id=ref_id,
+                name=name,
+                units=units,
+                methods=methods,
+                description=description,
+                aliases=aliases,
+            )
+            concepts.append(rc)
+        except ValidationError:
+            # Skip invalid items but continue processing
+            continue
+
+    return concepts
+
+
+def load_and_convert_referential(fpath: str | Path) -> List[ReferenceConcept]:
+    """Convenience function: read a referential JSON file, parse it and convert to ReferenceConcepts.
+
+    Returns the list of successfully converted `ReferenceConcept` instances.
+    """
+    raw = read_referential_json(fpath=fpath)
+    parsed = parse_raw_referential(raw)
+    items = parsed.get("items", [])
+    return convert_entries_to_reference_concepts(items)
+
+
+def load_referential(fpath: str | Path | None = None) -> List[ReferenceConcept]:
+    """Load and convert the referential using an internal default path when None.
+
+    If `fpath` is None, the function resolves the default file located at
+    `../data/reference/raw_vitis_crop_ontology.json` relative to this module.
+    Returns a list of `ReferenceConcept` instances.
+    """
+    if fpath is None:
+        module_dir = Path(__file__).resolve().parent
+        fpath = module_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
+    return load_and_convert_referential(fpath)
+
+
+# if __name__ == "__main__":
+#     # Resolve the path relative to this file so the script can be
+#     # run from any current working directory.
+#     script_dir = Path(__file__).resolve().parent
+#     data_path = script_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
+#     print(f"Looking for referential file at: {data_path.resolve()}")
+#     try:
+#         res = read_referential_json(fpath=data_path)
+#     except Exception as e:
+#         print(f"Error reading referential JSON: {e}")
+#     else:
+#         parsed = parse_raw_referential(res)
+#         print(f"Parsed {parsed.get('count', 0)} raw entries")
+#         items = parsed.get("items", [])
+#         refs = convert_entries_to_reference_concepts(items)
+#         print(f"Converted to {len(refs)} ReferenceConcept instances")
