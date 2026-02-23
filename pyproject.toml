@@ -6,6 +6,12 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "lmstudio>=1.5.0",
+    "openpyxl>=3.1.5",
     "pandas>=3.0.1",
+    "pillow>=12.1.1",
     "pydantic>=2.12.5",
+    "pymupdf>=1.27.1",
+    "requests>=2.32.5",
+    "torch>=2.10.0",
+    "transformers>=5.2.0",
 ]
