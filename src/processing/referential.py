@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 from pydantic import ValidationError
 
-from ..classes import ReferenceConcept
+from src.classes import ReferenceConcept
 
 
 def read_referential_json(fpath: str | Path) -> Dict[str, Any]:
@@ -105,32 +105,8 @@ def load_and_convert_referential(fpath: str | Path) -> List[ReferenceConcept]:
     return convert_entries_to_reference_concepts(items)
 
 
-def load_referential(fpath: str | Path | None = None) -> List[ReferenceConcept]:
-    """Load and convert the referential using an internal default path when None.
-
-    If `fpath` is None, the function resolves the default file located at
-    `../data/reference/raw_vitis_crop_ontology.json` relative to this module.
-    Returns a list of `ReferenceConcept` instances.
-    """
-    if fpath is None:
-        module_dir = Path(__file__).resolve().parent
-        fpath = module_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
+def load_referential() -> List[ReferenceConcept]:
+    module_dir = Path(__file__).resolve().parent
+    fpath = module_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
     return load_and_convert_referential(fpath)
 
-
-# if __name__ == "__main__":
-#     # Resolve the path relative to this file so the script can be
-#     # run from any current working directory.
-#     script_dir = Path(__file__).resolve().parent
-#     data_path = script_dir.parent.parent / "data" / "reference" / "raw_vitis_crop_ontology.json"
-#     print(f"Looking for referential file at: {data_path.resolve()}")
-#     try:
-#         res = read_referential_json(fpath=data_path)
-#     except Exception as e:
-#         print(f"Error reading referential JSON: {e}")
-#     else:
-#         parsed = parse_raw_referential(res)
-#         print(f"Parsed {parsed.get('count', 0)} raw entries")
-#         items = parsed.get("items", [])
-#         refs = convert_entries_to_reference_concepts(items)
-#         print(f"Converted to {len(refs)} ReferenceConcept instances")
