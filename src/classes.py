@@ -1,12 +1,25 @@
 from pydantic import BaseModel, Field
 
 
-class ResultLLM(BaseModel):
-    score: float = Field(..., description="Score")
+class Alignment(BaseModel):
+    score: float = Field(...,         
+                         ge=0.0,
+                         le=1.0,
+                         description="Score normalisé entre 0 et 1"
+                         )
     core_id: str = Field(..., description="Variable core id")
     dataset_id: str = Field(..., description="Dataset ID")
     trait_id: str = Field(..., description="Trait ID")
     
+class CandidateAlignments(BaseModel):
+    score: float = Field(...,
+                         ge=0.0,
+                         le=1.0,
+                         description="Score normalisé entre 0 et 1"
+                         )
+    core_id: str = Field(..., description="Variable core id")
+    dataset_id: str = Field(..., description="Dataset ID")
+    trait_id: str = Field(..., description="Trait ID")
     
 class NormalizedVariable(BaseModel):
     dataset_id: str = Field(..., description="ID du dataset")
