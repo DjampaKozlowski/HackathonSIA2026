@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "uv: run matching_llm",
+      "type": "shell",
+      "command": "env PYTHONPATH=\"${workspaceFolder}\" uv run python -m src.matching.matching_llm",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "uv: debug matching_llm",
+      "type": "shell",
+      "command": "env PYTHONPATH=\"${workspaceFolder}\" uv run python -m debugpy --listen 5678 --wait-for-client -m src.matching.matching_llm",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

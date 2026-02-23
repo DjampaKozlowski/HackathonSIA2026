@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel, Field
 
 
@@ -12,6 +14,16 @@ class CandidateAlignment(BaseModel):
     dataset_id: str = Field(..., description="Dataset ID")
     trait_id: str = Field(..., description="Trait ID")
     
+class AlignmentLLMResponse(BaseModel):
+    score: float = Field(...,
+                         ge=0.0,
+                         le=1.0,
+                         description="Score normalisé entre 0 et 1"
+                         )
+    ref_id: str = Field(..., description="Variable core id")
+    why_description: str = Field(..., description="Description of why the alignment was made")
+class AlignmentLLMResponseList(BaseModel):
+    items: List[AlignmentLLMResponse]
 class NormalizedVariable(BaseModel):
     dataset_id: str = Field(..., description="ID du dataset")
     trait_id: str = Field(..., description="ID du trait")

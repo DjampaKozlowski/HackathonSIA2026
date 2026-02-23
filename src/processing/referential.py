@@ -77,7 +77,7 @@ def convert_entries_to_reference_concepts(entries: List[dict]) -> List[Reference
             if unit not in item['units']:
                 item['units'].append(unit)
             if method not in item['methods']:
-                item['methods'].append(unit)
+                item['methods'].append(method)
             if description not in item['description']:
                 item['description'] += '|'+description
             if short_name not in item['aliases']:

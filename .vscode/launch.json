@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run package src (module)",
+      "type": "python",
+      "request": "launch",
+      "module": "src",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Run __main__.py (with PYTHONPATH)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/__main__.py",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+    ,
+    {
+      "name": "Attach to uv debug (start via task)",
+      "type": "python",
+      "request": "attach",
+      "connect": { "host": "localhost", "port": 5678 },
+      "preLaunchTask": "uv: debug matching_llm",
+      "justMyCode": false
+    }
+  ]
+}

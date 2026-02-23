@@ -1,40 +1,5 @@
 [
   {
-    "ref_id": "ref_1",
-    "name": "Alcohol content",
-    "units": [
-      "%v/v",
-      "g/l eq H2SO4",
-      "pH",
-      "meq/l",
-      "S3_5_7",
-      "S1_9_by2"
-    ],
-    "methods": [
-      "Alcohol_NIRS_analyser",
-      "TA_AutomaticTitrator",
-      "Manual titration",
-      "pH_meter",
-      "OIV:508",
-      "OIV:506"
-    ],
-    "description": "Alcohol content|Titratable acidity of the berries (g/l H2SO4)|Berry tiratable acidity (manual titration, g/l H2SO4)|Berry pH|Titratable acidity in the berries (meq/l)|Must pH|Must pH, OIV:508|Must titratable acidity (eq g/l H2SO4)|Must Titratable acidity|Total acid content of must, OIV:506|Wine pH|Titratable acidity of the wine (g/l eq H2SO4)",
-    "aliases": [
-      "ALC_C",
-      "BER_TA_g",
-      "BER_TA_man_g",
-      "BERRY_pH",
-      "BERRY_TA_meq",
-      "MUST_pH",
-      "MUST_pH_OIV_508",
-      "MUST_TA_H2SO4",
-      "MUST_TA_meq",
-      "MUST_TA_OIV_506",
-      "WINE_pH",
-      "WINE_TA_gH2SO4"
-    ]
-  },
-  {
     "ref_id": "ref_2",
     "name": "Potassium concentration",
     "units": [
