@@ -1,6 +1,13 @@
 {
   "version": "0.2.0",
   "configurations": [
+      {
+      "name": "Attach to debugpy (FastAPI via uv run)",
+      "type": "python",
+      "request": "attach",
+      "connect": { "host": "localhost", "port": 5678 },
+      "pathMappings": [{ "localRoot": "${workspaceFolder}", "remoteRoot": "${workspaceFolder}" }]
+    },
     {
       "name": "Run package src (module)",
       "type": "python",

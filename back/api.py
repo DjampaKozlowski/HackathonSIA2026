@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
+from src.extracting.main import extract_pdf_to_dict, parse_file
 from src.processing.referential import load_referential
 from src.classes import NormalizedVariable
 
@@ -56,5 +57,8 @@ def align(variable: NormalizedVariable):
 
 @app.post("/uploadfile")
 async def create_upload_file(file: UploadFile):
-    print(f"Received file: {file.filename}")
-    return {"filename": file.filename}
+	if file.content_type == "application/pdf":
+		bytes = await file.read()
+		result = parse_file(bytes)
+		return {"variables": result}
+	return {"variables": []}

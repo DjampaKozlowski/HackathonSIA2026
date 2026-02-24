@@ -55,7 +55,65 @@ def merge(results, new_items):
             if results[tid].get(field) in (None, "", "null") and item.get(field) not in (None, "", "null"):
                 results[tid][field] = item.get(field)
 
+def parse_file(file):
+    traits = [
+        {
+        "trait_id": "VIGOUR",
+        "description": "VIGOUR"
+        },
+        {
+        "trait_id": "Shoot_Lenght",
+        "description": "Shoot Lenght"
+        },
+        {
+        "trait_id": "Leaf_Area",
+        "description": "Leaf Area"
+        },
+        {
+        "trait_id": "SPAD",
+        "description": "SPAD"
+        },
+        {
+        "trait_id": "Fresh_Aerial_Weight",
+        "description": "Fresh Aerial Weight"
+        },
+        {
+        "trait_id": "Fresh_Root_Weight",
+        "description": "Fresh Root Weight"
+        },
+        {
+        "trait_id": "Bud_Break",
+        "description": "Bud Break"
+        }
+    ]
+ 
+    pages = extract_pdf_to_dict(file)
+    prompt_path = Path(__file__).parent.parent.parent / "prompts" / "v2" / "prompt_targeted_extraction.txt"
+    with open(prompt_path, "r") as f:
+        template = f.read()
 
+    # 4. Initialiser résultats
+    results = {t["trait_id"]: {**t, "trait": None, "method": None, "unit": None} for t in traits}
+
+    # 5. Traiter chaque page
+    for page_num, content in pages.items():
+        print(f"Page {page_num}...", end=" ")
+        try:
+            prompt = build_prompt(traits, content, template)
+            response = query_lm_studio_with_text(prompt)
+            parsed = parse_json(response)
+            merge(results, parsed)
+
+            found = [item["trait_id"] for item in parsed]
+            print(f"{found if found else 'nothing'}")
+        except Exception as e:
+            print(f"error: {e}")
+
+    # 6. Sauvegarder
+    final = list(results.values())
+    return final
+
+    
 def run_pipeline(excel_source, pdf_source, output_path="outputs/result.json"):
     """
     Lance la pipeline complète d'extraction.

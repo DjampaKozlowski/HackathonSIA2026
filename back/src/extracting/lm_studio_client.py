@@ -14,7 +14,7 @@ def query_lm_studio_with_text(prompt: str) -> str:
     url = "http://localhost:1234/v1/chat/completions"
     
     payload = {
-        "model": "google/gemma-3-12b",
+        "model": "openai/gpt-oss-20b",
         "messages": [
             {
                 "role": "user",
