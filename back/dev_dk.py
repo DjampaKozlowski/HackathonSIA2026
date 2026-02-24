@@ -1,4 +1,5 @@
-from src.embedding.embedding import SemanticEmbedding
+from src.embedding import SemanticEmbedding
+from src.classes import ReferenceConcept, NormalizedVariable
 
 ref_json_toy = [
   {
@@ -89,17 +90,28 @@ var_json =   {
     "method":"visual rating",
     "unit": "S1_9",
     "description": "Berry sour rot estimation (1 to 9 scale)",
-    "aliases": []
+    "aliases": ""
   }
 
 
-
-
+# {
+#     "dataset_id": "mysuperdataset",
+#     "trait_id": "SR_ROT",
+#     "trait": "Sour Rot",
+#     "method":"visual rating",
+#     "unit": "S1_9",
+#     "description": "Berry sour rot estimation (1 to 9 scale)",
+#     "aliases": ""
+# }
 
 
 
 if __name__ == '__main__':
-    semantic_embedding = SemanticEmbedding(referential_json=ref_json_toy, model_name="nomic-embed-text-v1.5")
-    best_matches = semantic_embedding.get_best_matches(var_json, top_k=2)
-    print(best_matches)
+    refs : list[ReferenceConcept] = [ReferenceConcept(**item) for item in ref_json_toy]
+    variable = NormalizedVariable(**var_json)
+    semantic_embedding = SemanticEmbedding(referential_json=refs, model_name="nomic-embed-text-v1.5")
+    best_matches, idx = semantic_embedding.get_best_matches(variable, top_k=2) # best_matches not usefull so far (scores)
+    best_refs = [refs[i] for i in idx]
+    print(best_matches, idx, best_refs)
+    # best_refs = refs[idx]    print(best_matches)
 

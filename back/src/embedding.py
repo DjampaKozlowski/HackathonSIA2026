@@ -20,24 +20,52 @@ def load_embedding_model(model_name:str = "nomic-embed-text-v1.5"):
         raise 
     
 
+# def build_referential_embedding_string(entry: dict) -> str:
+#     """
+#     Build a structured embedding string for a referential entry.
+#     Designed for semantic similarity (retrieval).
+#     """
+
+#     name = (entry.get("name") or "").strip()
+#     description = (entry.get("description") or "").strip()
+
+#     # Some descriptions contain "|" separators → normalize
+#     if "|" in description:
+#         description = "; ".join(
+#             part.strip() for part in description.split("|") if part.strip()
+#         )
+
+#     units = entry.get("units") or []
+#     methods = entry.get("methods") or []
+#     aliases = entry.get("aliases") or []
+
+#     return (
+#         f"TRAIT: {name}\n"
+#         f"DESCRIPTION: {description}\n"
+#         f"UNITS: {', '.join(units)}\n"
+#         f"METHODS: {', '.join(methods)}\n"
+#         f"ALIASES: {', '.join(aliases)}"
+#     ).strip()
+
 def build_referential_embedding_string(entry: dict) -> str:
     """
     Build a structured embedding string for a referential entry.
     Designed for semantic similarity (retrieval).
     """
 
-    name = (entry.get("name") or "").strip()
-    description = (entry.get("description") or "").strip()
+    name = (entry.name or "").strip()
+    description = (entry.description or "").strip()
 
+    # Some descriptions contain "|" separators → normalize
     # Some descriptions contain "|" separators → normalize
     if "|" in description:
         description = "; ".join(
             part.strip() for part in description.split("|") if part.strip()
         )
 
-    units = entry.get("units") or []
-    methods = entry.get("methods") or []
-    aliases = entry.get("aliases") or []
+    units = entry.units or []
+    methods = entry.methods or []
+    aliases = entry.aliases or []
 
     return (
         f"TRAIT: {name}\n"
@@ -48,18 +76,38 @@ def build_referential_embedding_string(entry: dict) -> str:
     ).strip()
 
 
+# def build_dataset_embedding_string(entry: dict) -> str:
+#     """
+#     Build a structured embedding string for a dataset variable
+#     to be matched against the referential.
+#     """
+
+#     name = (entry.get("trait") or entry.get("trait_id") or "").strip()
+#     description = (entry.get("description") or "").strip()
+
+#     unit = (entry.get("unit") or "").strip()
+#     method = (entry.get("method") or "").strip()
+#     aliases = entry.get("aliases") or []
+
+#     return (
+#         f"TRAIT: {name}\n"
+#         f"DESCRIPTION: {description}\n"
+#         f"UNITS: {unit}\n"
+#         f"METHODS: {method}\n"
+#         f"ALIASES: {', '.join(aliases)}"
+#     ).strip()
+
 def build_dataset_embedding_string(entry: dict) -> str:
     """
     Build a structured embedding string for a dataset variable
     to be matched against the referential.
     """
 
-    name = (entry.get("trait") or entry.get("trait_id") or "").strip()
-    description = (entry.get("description") or "").strip()
-
-    unit = (entry.get("unit") or "").strip()
-    method = (entry.get("method") or "").strip()
-    aliases = entry.get("aliases") or []
+    name = (entry.trait or "").strip()
+    description = (entry.description or "").strip()
+    unit = (entry.unit or "").strip()
+    method = (entry.method or "").strip()
+    aliases = (entry.aliases or "").strip()
 
     return (
         f"TRAIT: {name}\n"
@@ -68,7 +116,6 @@ def build_dataset_embedding_string(entry: dict) -> str:
         f"METHODS: {method}\n"
         f"ALIASES: {', '.join(aliases)}"
     ).strip()
-
 
 
 def build_referential_embedding(
@@ -112,6 +159,62 @@ def build_referential_embedding(
         (entry.get("ref_id") or entry.get("name") or "").strip()
         for entry in ref_json
     ]
+
+    if any(not rid for rid in ref_ids):
+        raise ValueError(
+            "Some referential entries are missing both 'ref_id' and 'name'."
+        )
+
+    # Batch embedding
+    ref_embeddings: np.ndarray = model.embed(ref_texts)
+
+    # Validation
+    if len(ref_embeddings) != len(ref_ids):
+        raise ValueError(
+            "ref_embeddings and ref_ids must have the same length."
+        )
+
+    return ref_ids, ref_embeddings
+
+def build_referential_embedding(
+    model,
+    ref_json: List[ReferenceConcept],
+) -> Tuple[List[str], np.ndarray]:
+    """
+    Build embeddings for a referential dataset.
+
+    Parameters
+    ----------
+    model : EmbeddingModel
+        Model implementing an `embed(texts: Sequence[str]) -> np.ndarray`
+        method. The method must return a 2D numpy array of shape (N, D).
+    ref_json : Sequence[ReferenceConcept]
+        Referential entries used to generate embeddings.
+        Each entry must provide at least one of:
+        - 'ref_id'
+        - 'name'
+
+    Returns
+    -------
+    Tuple[List[str], np.ndarray]
+        - ref_ids: List of stable referential IDs (length N)
+        - ref_embeddings: Embedding matrix of shape (N, D)
+
+    Raises
+    ------
+    ValueError
+        If some entries are missing both 'ref_id' and 'name'.
+        If embeddings and IDs lengths mismatch.
+    """
+
+    # Build textual representation
+    ref_texts: List[str] = [
+        build_referential_embedding_string(r) for r in ref_json
+    ]
+
+    # Prefer stable IDs from the referential itself
+    ref_ids: List[str] = [(entry.ref_id or entry.name).strip() for entry in ref_json]
+
 
     if any(not rid for rid in ref_ids):
         raise ValueError(
@@ -271,7 +374,7 @@ def compute_similarity(
 
 
     
-def select_k_best_match(ref_ids: List[str], similarity_scores: np.ndarray, top_k:int = 5) -> List[AlignmentScore]:
+def select_k_best_match(ref_ids: List[str], similarity_scores: np.ndarray, top_k:int = 5) -> Tuple[List[AlignmentScore], List[int]]:
   try:
     # Sort descending
     idx = np.argsort(-similarity_scores)
@@ -279,7 +382,7 @@ def select_k_best_match(ref_ids: List[str], similarity_scores: np.ndarray, top_k
         res = []
         for i in idx[:top_k]:
             res.append({"ref_id": ref_ids[i],"scores": similarity_scores[i]})
-    return res
+    return res, idx[:top_k]
   except Exception as e:
     print(f"Error while selection best matches with referential: {e}")
 
@@ -287,9 +390,10 @@ def select_k_best_match(ref_ids: List[str], similarity_scores: np.ndarray, top_k
 class SemanticEmbedding:
     def __init__(self, referential_json: List[ReferenceConcept], model_name:str = "nomic-embed-text-v1.5"):
       self.model = load_embedding_model(model_name=model_name)
+      print("this is my model", self.model)
       self.ref_ids, self.ref_embeddings = build_referential_embedding(self.model, referential_json)   
 
-    def get_best_matches(self, var_json:NormalizedVariable, top_k:int = 5) -> List[AlignmentScore]:   
+    def get_best_matches(self, var_json: NormalizedVariable, top_k:int = 5) -> List[AlignmentScore]:   
       var_embedding = build_var_embedding(self.model, var_json)
       similarity_scores = compute_similarity(var_embedding, self.ref_embeddings)
       return select_k_best_match(self.ref_ids, similarity_scores, top_k= top_k)
