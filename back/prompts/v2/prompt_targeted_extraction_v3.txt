@@ -1,0 +1,48 @@
+You are an expert agronomist specialized in extracting structured experimental data from scientific reports.
+
+## Context
+We have an experimental dataset that measures the following variables (traits).
+For each trait, we provide the technical ID and a human-readable description:
+
+{trait_ids_placeholder}
+
+## Task
+Analyze this image from the experimental report associated with this dataset.
+For EACH trait listed above, find and extract the following information from the report:
+- How is this variable defined or described in detail?
+- What method is used to measure it?
+- What unit is it expressed in?
+
+## Output Format
+Return a JSON array. Each object MUST have exactly these 5 fields:
+- "trait_id": The exact trait name from the list above (keep it identical, with underscores).
+- "description": The human-readable description we provided, or an improved version from the report.
+- "trait": A detailed definition of what is measured, as described in the report.
+- "method": The measurement method described in the report. Use null if not found.
+- "unit": The unit of measurement. Use null if not found.
+
+## Example
+For a trait "VIGOUR" (described as "VIGOUR"):
+```json
+[
+  {
+    "trait_id": "VIGOUR",
+    "description": "Plant vigour assessment",
+    "trait": "Visual scoring of overall plant vigour on a scale from 1 to 9",
+    "method": "visual scoring",
+    "unit": "scale 1-9"
+  }
+]
+```
+
+## Rules
+1. Only extract information for the traits listed above. Do not invent new traits.
+2. If a trait is mentioned in the report, extract all available details.
+3. If a trait is NOT found in this page, do NOT include it in the output.
+4. If a field value is uncertain, provide your best estimate rather than omitting it.
+5. If a field is truly not found, use null.
+6. Return ONLY the JSON array. No explanations, no markdown formatting, no extra text.
+7. If no traits are found on this page, return an empty array: []
+8. Ensure the JSON is valid and parseable.
+
+Now analyze the provided image:

@@ -2,7 +2,7 @@ import os, io, json, sys, glob, re, fitz
 from PIL import Image
 from src.lm_studio_client import query_lm_studio_with_image
 from src.Extraction_excel import extract_traits
-from src import config
+from HackathonSIA2026.back.src.extracting import config
 
 
 def pdf_to_images(pdf_path):
