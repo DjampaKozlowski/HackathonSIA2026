@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile
 from typing import List
 
 from src.processing.referential import load_referential
@@ -43,3 +43,7 @@ def align(variable: NormalizedVariable):
 
 
 
+@app.post("/uploadfile")
+async def create_upload_file(file: UploadFile):
+    
+    return {"filename": file.filename}
