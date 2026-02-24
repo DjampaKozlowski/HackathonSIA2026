@@ -41,3 +41,7 @@ class ReferenceConcept(BaseModel):
     methods: list[str] = Field(default_factory=list, description="Methods")
     description: str = Field(..., description="Description")
     aliases: list[str] = Field(default_factory=list, description="Alias list")
+
+class AlignmentScore(BaseModel):
+    ref_id: str = Field(..., description="Core variable id")
+    score: float = Field(..., description="Semantic proximity")
