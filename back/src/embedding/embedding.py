@@ -1,102 +1,12 @@
 import lmstudio as lms
 from pathlib import Path
+from typing import List, Union, Tuple
 import numpy as np
 import pandas as pd
 
-from src.classes import ReferenceConcept, NormalizedVariable
+from src.classes import ReferenceConcept, NormalizedVariable, AlignmentScore
 
-referential = [
-  {
-    "ref_id": "ref_1",
-    "name": "Alcohol content",
-    "units": [
-      "%v/v",
-    ],
-    "methods": [
-      "Alcohol_NIRS_analyser",
-    ],
-    "description": "Alcohol content",
-    "aliases": [
-      "ALC_C",
-    ]
-  },
-  {
-    "ref_id": "ref_2",
-    "name": "Potassium concentration",
-    "units": [
-      "mg/l",
-      "g/100g"
-    ],
-    "methods": [
-      "HPLC ion exchange",
-      "flame spec"
-    ],
-    "description": "Potassium concentration of the berries (IC-HPLC, mg/l)|Potassium concentration in the berries (flame spec., mg/l)|Potassium concentration in green berries (IC-HPLC, mg/l)|Must Potassium concentration (flame spec.)|Potassium concentration of the must (IC-HPLC, mg/l)|Potassium concentration in petioles (ICP-AES, g/100g)|Wine Potassium concentration",
-    "aliases": [
-      "BER_K_HPLC",
-      "BERRY_K",
-      "GBER_K",
-      "MUST_K",
-      "MUST_K_IC",
-      "PET_K",
-      "WINE_K"
-    ]
-  },
-  {
-    "ref_id": "ref_3",
-    "name": "malic acid concentration",
-    "units": [
-      "g/l",
-      "meq/l"
-    ],
-    "methods": [
-      "Mal_Enzymatic",
-      "meq/l",
-      "g/l",
-    ],
-    "description": "Malic acid concentration of the berries (Enzym., g/l)|Malic acid concentration of the berries (HPLC, g/l)|Tartaric acid concentration in the berries (Metav.., g/l)|Tartaric acid concentration in the berries (HPLC, g/l)|Malic acid concentration in the berries (Enzym., meq/l)|Tartaric acid concentration in the berries (Metavan., meq/l)|Malic acid concentration in green berries (Enzym., g/l)|Malic acid concentration of the must (Cap. electro., g/l)|Malic acid concentration of the must (Enzym., g/l)|Malic acid concentration of the must (HPLC, g/l)|Must Malic acid concentration|Wine Malic acid concentration|Malic acid concentration in the wine (Cap. electro., g/l)",
-    "aliases": [
-      "BER_MAL_g",
-      "BER_MAL_HPLC",
-      "BERRY_MAL_meq",
-      "GBER_MAL_ENZ_g",
-      "MUST_MAL_CapI_g",
-      "MUST_MAL_g",
-      "MUST_MAL_HPLC_g",
-      "MUST_MAL_meq",
-      "WINE_MAL",
-      "WINE_MAL_CapE_g"
-    ]
-  },
-  {
-    "ref_id": "ref_4",
-    "name": "Sour rot",
-    "units": [
-      "S1_9",
-      "%"
-    ],
-    "methods": [
-      "Visual rating",
-      "%"
-    ],
-    "description": "Berry sour rot estimation (1 to 9 scale)|Percentage of berries with sour rot",
-    "aliases": [
-      "BER_SOUR_ROT_1_9",
-      "BER_SOUR_TOT_PC"
-    ]
-  },
-]
 
-tests =   [{
-    "dataset_id": "mysuperdataset",
-    "trait_id": "SR_ROT",
-    "trait": "Sour Rot",
-    "method":"visual rating",
-    "unit": "S1_9",
-    "description": "Berry sour rot estimation (1 to 9 scale)",
-    "aliases": []
-  }
-]
 
 
 
@@ -104,9 +14,10 @@ tests =   [{
 
 def load_embedding_model(model_name:str = "nomic-embed-text-v1.5"):
     try:
-        return lms.embedding_model("nomic-embed-text-v1.5")
+        return lms.embedding_model(model_name)
     except Exception as e:
-        raise e
+        print(f"Error while loading the embedding model: {e}")
+        raise 
     
 
 def build_referential_embedding_string(entry: dict) -> str:
@@ -158,109 +69,228 @@ def build_dataset_embedding_string(entry: dict) -> str:
         f"ALIASES: {', '.join(aliases)}"
     ).strip()
 
-def build_referential_embedding(model, ref_json: list[ReferenceConcept], ):
 
 
-
-
-def build_or_load_referential_embedding(model, referential: ReferenceConcept, ref):
+def build_referential_embedding(
+    model,
+    ref_json: List[ReferenceConcept],
+) -> Tuple[List[str], np.ndarray]:
     """
-    
+    Build embeddings for a referential dataset.
+
+    Parameters
+    ----------
+    model : EmbeddingModel
+        Model implementing an `embed(texts: Sequence[str]) -> np.ndarray`
+        method. The method must return a 2D numpy array of shape (N, D).
+    ref_json : Sequence[ReferenceConcept]
+        Referential entries used to generate embeddings.
+        Each entry must provide at least one of:
+        - 'ref_id'
+        - 'name'
+
+    Returns
+    -------
+    Tuple[List[str], np.ndarray]
+        - ref_ids: List of stable referential IDs (length N)
+        - ref_embeddings: Embedding matrix of shape (N, D)
+
+    Raises
+    ------
+    ValueError
+        If some entries are missing both 'ref_id' and 'name'.
+        If embeddings and IDs lengths mismatch.
     """
-    ref_embeddings_path = Path("ref_embeddings.npy")
-    ref_ids_path = Path("ref_ids.npy")  # stores IDs aligned with rows of ref_embeddings
+
+    # Build textual representation
+    ref_texts: List[str] = [
+        build_referential_embedding_string(r) for r in ref_json
+    ]
+
+    # Prefer stable IDs from the referential itself
+    ref_ids: List[str] = [
+        (entry.get("ref_id") or entry.get("name") or "").strip()
+        for entry in ref_json
+    ]
+
+    if any(not rid for rid in ref_ids):
+        raise ValueError(
+            "Some referential entries are missing both 'ref_id' and 'name'."
+        )
+
+    # Batch embedding
+    ref_embeddings: np.ndarray = model.embed(ref_texts)
+
+    # Validation
+    if len(ref_embeddings) != len(ref_ids):
+        raise ValueError(
+            "ref_embeddings and ref_ids must have the same length."
+        )
+
+    return ref_ids, ref_embeddings
+
+
+
+
+def save_referential_embedding(
+    ref_embeddings: np.ndarray,
+    ref_ids: List[str],
+    dir: Union[str, Path] = ".",
+    embeddings_filename: str = "ref_embeddings.npy",
+    ids_filename: str = "ref_ids.npy",
+) -> tuple[Path, Path]:
+    """
+    Save referential embeddings and their aligned IDs.
+
+    Parameters
+    ----------
+    ref_embeddings : np.ndarray
+        Embedding matrix of shape (N, D)
+    ref_ids : Sequence
+        IDs aligned with rows of ref_embeddings (length N)
+    dir : str | Path
+        Target directory for saving files
+    embeddings_filename : str
+        Filename for embeddings
+    ids_filename : str
+        Filename for ids
+
+    Returns
+    -------
+    tuple[Path, Path]
+        Paths of saved embeddings and ids files
+    """
 
     try:
-        # Ref. Embedding (+ IDs)
-        if ref_embeddings_path.exists() and ref_ids_path.exists():
-            print("Ref. embedding + ids files already exist. Loading")
-            ref_embeddings = np.load(ref_embeddings_path)
-            ref_ids = np.load(ref_ids_path, allow_pickle=True).tolist()  # list[str]
 
-            # Safety check: keep alignment consistent
-            if len(ref_ids) != ref_embeddings.shape[0]:
-                raise ValueError(
-                    f"Mismatch between embeddings rows ({ref_embeddings.shape[0]}) "
-                    f"and ref_ids length ({len(ref_ids)}). Delete cache files and recompute."
-                )
-        else:
-            print("Ref. embedding file(s) not found. Ref. embedding will be computed.")
-            ref_texts = [build_referential_embedding_string(r) for r in referential]
 
-            # Prefer stable IDs from the referential itself
-            ref_ids = [(entry.get("ref_id") or entry.get("name") or "").strip() for entry in referential]
-            if any(not rid for rid in ref_ids):
-                raise ValueError("Some referential entries are missing both 'ref_id' and 'name'.")
+        # Resolve directory
+        save_dir = Path(dir).resolve()
 
-            ref_embeddings = model.embed(ref_texts)  # batch
+        # File paths
+        ref_embeddings_path = save_dir / embeddings_filename
+        ref_ids_path = save_dir / ids_filename
 
-            # Save embeddings + ids (same order!)
-            np.save(ref_embeddings_path, ref_embeddings)
-            np.save(ref_ids_path, np.array(ref_ids, dtype=object))
-        return (ref_ids, ref_embeddings)
+        # Save (aligned order preserved)
+        np.save(ref_embeddings_path, ref_embeddings)
+        np.save(ref_ids_path, np.array(ref_ids, dtype=object))
+
+        print(f"Referential embeddings saved to: {ref_embeddings_path}")
+        print(f"Referential IDs saved to: {ref_ids_path}")
+
+        return ref_embeddings_path, ref_ids_path
+
     except Exception as e:
-        raise(e)
+        print(f"Error during referential embedding saving: {e}")
+        raise
 
 
-
-def get_embedding_match_with_referential(model, dataset:NormalizedVariable):
+def load_referential_embedding(
+    dir: Union[str, Path] = ".",
+    embeddings_filename: str = "ref_embeddings.npy",
+    ids_filename: str = "ref_ids.npy"
+    ):
     try:
-        text = build_dataset_embedding_string(t)
-        return model.embed(test_text)
+      # Resolve directory
+      save_dir = Path(dir).resolve()
+
+      # File paths
+      ref_embeddings_path = save_dir / embeddings_filename
+      ref_ids_path = save_dir / ids_filename
+
+      # Save (aligned order preserved)
+      ref_embeddings = np.load(ref_embeddings_path)
+      ref_ids = np.load(ref_ids_path)
+      return ref_ids, ref_embeddings
     except Exception as e:
-        raise(e)
+        print(f"Error while loading reference embedding: {e}")
+        raise
+
+
+def build_var_embedding(model, norm_var: NormalizedVariable)-> np.array:
+    try:
+        embedding_str = build_dataset_embedding_string(norm_var)
+        return model.embed(embedding_str)
+    except Exception as e:
+        print(f"Error while embedding the variable content: {e}")
+        raise
+
+
+def get_semantic_similarity_score(var_embedding, refs_embedding) -> List[float]:
+    try:
+        return refs_embedding @ var_embedding
+    except Exception as e:
+        print(f"Error while computing semantic similarity score between the variable and the reference: {e}")
+        raise
+
+def compute_similarity(
+    var_embedding: np.ndarray,
+    ref_embeddings: np.ndarray,
+) -> np.ndarray:
+    """
+    Compute cosine similarity between a query embedding and a set of reference embeddings.
+
+    Parameters
+    ----------
+    var_embedding : np.ndarray
+        Shape (d,)
+    ref_embeddings : np.ndarray
+        Shape (n, d)
+    top_k : Optional[int]
+        If provided, return only the top_k most similar embeddings.
+
+    Returns
+    -------
+    similarities : np.ndarray
+        Cosine similarity scores.
+    indices : np.ndarray
+        Indices sorted by descending similarity.
+    """
+    try:
+      # Convert to numpy if needed
+      var_embedding = np.asarray(var_embedding)
+      ref_embeddings = np.asarray(ref_embeddings)
+
+      # Ensure correct shape
+      if var_embedding.ndim != 1:
+          raise ValueError("query_embedding must be 1D (shape: (d,))")
+
+      if ref_embeddings.ndim != 2:
+          raise ValueError("ref_embeddings must be 2D (shape: (n, d))")
+
+      # Normalize embeddings (important for cosine similarity)
+      query_norm = var_embedding / np.linalg.norm(var_embedding)
+      ref_norm = ref_embeddings / np.linalg.norm(ref_embeddings, axis=1, keepdims=True)
+
+      # Cosine similarity (vectorized dot product)
+      return ref_norm @ query_norm
+    except Exception as e:
+      print(f"Error while computing semantic similarity score between the variable and the reference: {e}")
+      raise
+
+
+
     
+def select_k_best_match(ref_ids: List[str], similarity_scores: np.ndarray, top_k:int = 5) -> List[AlignmentScore]:
+  try:
+    # Sort descending
+    idx = np.argsort(-similarity_scores)
+    if top_k is not None:
+        res = []
+        for i in idx[:top_k]:
+            res.append({"ref_id": ref_ids[i],"scores": similarity_scores[i]})
+    return res
+  except Exception as e:
+    print(f"Error while selection best matches with referential: {e}")
 
 
+class SemanticEmbedding:
+    def __init__(self, referential_json: List[ReferenceConcept], model_name:str = "nomic-embed-text-v1.5"):
+      self.model = load_embedding_model(model_name=model_name)
+      self.ref_ids, self.ref_embeddings = build_referential_embedding(self.model, referential_json)   
 
-
-
-
-
-if __name__== "__main__":
-    model = load_embedding_model()
-
-
-
-
-
-    # Variables
-    for t in tests:
-        test_text = build_dataset_embedding_string(t)
-        test_embedding = model.embed(test_text)
-        # Similarity
-        scores = ref_embeddings @ test_embedding
-
-    df = pd.DataFrame(
-        {
-            "ref_id": [entry.get("ref_id") for entry in referential],
-            "name": [entry.get("name") for entry in referential],
-            "scores": scores
-        }
-    )
-
-    res = (
-        df
-        .sort_values(by='scores', ascending=False)
-        .head(2)
-        [['ref_id', 'scores']]
-        .to_dict(orient='records')
-    )
-    # print(res[['ref_id', 'scores']].to_dict(orient='records'))
-    print(res)
-
-    
-
-
-        # # Optional: human-readable mapping file (tsv)
-        # with open("ref_id_to_name.tsv", "w", encoding="utf-8") as f:
-        #     f.write("ref_id\tname\scores\n")
-        #     for i, entry in enumerate(referential):
-        #         rid = (entry.get("ref_id") or entry.get("name") or "").strip()
-        #         name = (entry.get("name") or "").strip()
-        #         f.write(f"{rid}\t{name}\t{scores[i]}\n")
-        
-    
-
-
+    def get_best_matches(self, var_json:NormalizedVariable, top_k:int = 5) -> List[AlignmentScore]:   
+      var_embedding = build_var_embedding(self.model, var_json)
+      similarity_scores = compute_similarity(var_embedding, self.ref_embeddings)
+      return select_k_best_match(self.ref_ids, similarity_scores, top_k= top_k)
 

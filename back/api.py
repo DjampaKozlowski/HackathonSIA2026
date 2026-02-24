@@ -45,6 +45,7 @@ def align(variable: NormalizedVariable):
 		raise HTTPException(status_code=500, detail=f"failed to import alignment function: {e}")
 
 	try:
+		# TODO: add refs that are in the top n.
 		alignments = align_variable(variable, refs[1:5])
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=f"alignment error: {e}")
