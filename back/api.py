@@ -4,6 +4,13 @@ from typing import List
 
 from src.processing.referential import load_referential
 from src.classes import NormalizedVariable
+from src.embedding import SemanticEmbedding
+
+# Load Referentials
+refs = load_referential()
+# Init the semantic embedding class and init the referential embedding
+semantic_embedding = SemanticEmbedding(referential_json=refs, model_name="nomic-embed-text-v1.5")
+
 
 app = FastAPI(title="HackathonSIA2026 API")
 
@@ -18,10 +25,6 @@ app.add_middleware(
 
 @app.get("/core")
 def get_refs():
-	try:
-		refs = load_referential()
-	except Exception as e:
-		raise HTTPException(status_code=500, detail=str(e))
 	items = [r.model_dump() for r in refs]
 	return {"count": len(refs), "items": items}
 
@@ -34,11 +37,6 @@ def align(variable: NormalizedVariable):
 	initialization at import time.
 	"""
 	try:
-		refs = load_referential()
-	except Exception as e:
-		raise HTTPException(status_code=500, detail=f"load_referential error: {e}")
-
-	try:
 		# lazy import to avoid initializing LM Studio on import
 		from src.matching.matching_llm import align_variable
 	except Exception as e:
@@ -46,7 +44,9 @@ def align(variable: NormalizedVariable):
 
 	try:
 		# TODO: add refs that are in the top n.
-		alignments = align_variable(variable, refs[1:5])
+		best_matches, idx = semantic_embedding.get_best_matches(variable, top_k=5) # best_matches not usefull so far (scores)
+		best_refs = [refs[i] for i in idx]
+		alignments = align_variable(variable, best_refs)
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=f"alignment error: {e}")
 
