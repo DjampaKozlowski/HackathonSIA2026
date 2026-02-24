@@ -1,0 +1,14 @@
+Extract all readable text from this image and format it as structured Markdown.
+Focus on tables, measured variables, and experimental methods.
+
+Analyze this image from an agricultural experimental report.
+Extract all measured variables (traits) you can identify.
+
+Return a JSON array where each object has exactly these fields:
+- "trait_id": a short uppercase code (e.g., PM_LEAF_FREQ)
+- "description": short description in French
+- "trait": detailed definition of the measured trait in French
+- "method": measurement method used
+- "unit": unit of measurement (or null if not specified)
+
+Return ONLY valid JSON, no additional text.
