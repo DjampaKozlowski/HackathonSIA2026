@@ -158,8 +158,12 @@ def build_dataset_embedding_string(entry: dict) -> str:
         f"ALIASES: {', '.join(aliases)}"
     ).strip()
 
+def build_referential_embedding(model, ref_json: list[ReferenceConcept], ):
 
-def build_or_load_referential_embedding(model, referential: ReferenceConcept):
+
+
+
+def build_or_load_referential_embedding(model, referential: ReferenceConcept, ref):
     """
     
     """
@@ -215,7 +219,7 @@ def get_embedding_match_with_referential(model, dataset:NormalizedVariable):
 
 if __name__== "__main__":
     model = load_embedding_model()
-    
+
 
 
 
