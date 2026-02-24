@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -6,6 +6,7 @@ import {
   Stack,
   IconButton,
   Paper,
+  Popover,
 } from "@mui/material";
 import { alpha, useTheme } from "@mui/material/styles";
 import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
@@ -88,9 +89,9 @@ function Pill({
           sx={{
             color: textColor,
             fontWeight: 600,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            overflowWrap: "break-word",
+            wordBreak: "break-word",
             maxWidth: 340,
           }}
         >
@@ -145,6 +146,9 @@ function MappingLines({
   const theme = useTheme();
   const rowHeight = 73; // must roughly match pill height + spacing
 
+  const [anchorPos, setAnchorPos] = useState<{ top: number; left: number } | null>(null);
+  const [selectedMapping, setSelectedMapping] = useState<TMapping | null>(null);
+
   const importIndex = new Map<string, number>();
   imports.forEach((imp, index) => importIndex.set(imp.data_import_id, index));
 
@@ -167,6 +171,11 @@ function MappingLines({
   const maxRows = Math.max(imports.length, refs.length);
   const height = Math.max(1, maxRows) * rowHeight;
 
+  const handleClose = () => {
+    setAnchorPos(null);
+    setSelectedMapping(null);
+  };
+
   return (
     <Box sx={{ position: "relative", height }}>
       <svg width="100%" height={height} style={{ overflow: "visible" }}>
@@ -187,10 +196,33 @@ function MappingLines({
               stroke={color}
               strokeWidth={2}
               fill="none"
+              style={{ cursor: "pointer" }}
+              onClick={(e: React.MouseEvent<SVGPathElement>) => {
+                e.stopPropagation();
+                setSelectedMapping(m);
+                setAnchorPos({ left: e.clientX, top: e.clientY });
+              }}
             />
           );
         })}
       </svg>
+
+      <Popover
+        open={Boolean(anchorPos)}
+        anchorReference="anchorPosition"
+        anchorPosition={anchorPos ?? { top: 0, left: 0 }}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+      >
+        <Box sx={{ p: 2, maxWidth: 360 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
+            Why match score is {selectedMapping?.score.toFixed(2)} ?
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {selectedMapping?.why_description ?? "Aucune information disponible"}
+          </Typography>
+        </Box>
+      </Popover>
     </Box>
   );
 }

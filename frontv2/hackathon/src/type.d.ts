@@ -29,12 +29,12 @@ type TMappingAPI = {
     ref_id:string;
     data_import_id:string;
     score:number;
-    why_match:string;
+    why_description:string;
 }
 type TMapping = {
     id:string;
     ref_id:string;
     data_import_id:string;
     score:number;
-    why_match:string;
+    why_description:string;
 }
