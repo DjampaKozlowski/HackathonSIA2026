@@ -289,22 +289,3 @@
   }
 ]
 
-
-# plusieurs remarques 
-1) que penses tu de la qualité des résulatats 
-2) ça a mis vrmt bcq de temps est ce qu'il aurait une manière d'optimiser le temps de calcul
-3) HackathonSIA2026 git:(feature/lm_studio_integration) ✗ df -h
-Filesystem                                              Size    Used   Avail Capacity iused ifree %iused  Mounted on
-/dev/disk3s1s1                                         228Gi    10Gi    17Gi    38%    426k  182M    0%   /
-devfs                                                  212Ki   212Ki     0Bi   100%     732     0  100%   /dev
-/dev/disk3s6                                           228Gi    12Gi    17Gi    41%      12  182M    0%   /System/Volumes/VM
-/dev/disk3s2                                           228Gi   7.6Gi    17Gi    31%    1.7k  182M    0%   /System/Volumes/Preboot
-/dev/disk3s4                                           228Gi   3.3Mi    17Gi     1%     131  182M    0%   /System/Volumes/Update
-/dev/disk1s2                                           500Mi   6.0Mi   482Mi     2%       1  4.9M    0%   /System/Volumes/xarts
-/dev/disk1s1                                           500Mi   5.8Mi   482Mi     2%      37  4.9M    0%   /System/Volumes/iSCPreboot
-/dev/disk1s3                                           500Mi   1.5Mi   482Mi     1%      98  4.9M    0%   /System/Volumes/Hardware
-/dev/disk3s5                                           228Gi   179Gi    17Gi    92%    2.3M  182M    1%   /System/Volumes/Data
-map auto_home                                            0Bi     0Bi     0Bi   100%       0     0     -   /System/Volumes/Data/home
-/Users/antoinedalle/Downloads/Visual Studio Code.app   228Gi   186Gi    13Gi    94%    2.3M  135M    2%   /private/var/folders/vl/tmnlvns56vv0srmj8jkg_54h0000gn/T/AppTranslocation/9B45C344-9900-469D-8A7C-C4F8671C8682
-/dev/disk2s1                                           5.0Gi   2.0Gi   3.0Gi    40%      68   32M    0%   /System/Volumes/Update/SFR/mnt1
-/dev/disk3s1                                           228Gi    10Gi    17Gi    38%    426k  182M    0%   /System/Volumes/Update/mnt1
