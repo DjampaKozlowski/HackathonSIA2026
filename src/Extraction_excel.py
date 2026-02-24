@@ -41,7 +41,6 @@ def extract_traits(excel_path, sheet_name="Plots notations"):
     return traits
 
 
-
 def save_traits_to_json(traits, output_path="data/extracted_traits.json"):
     """Sauvegarde la liste des traits en JSON pour le pipeline"""
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
