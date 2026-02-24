@@ -74,15 +74,15 @@ export default function VariableDefinitionsTable() {
                 <TableRow key={row.id} hover>
                   <TableCell>
                     <TextField
-                      value={row.datasetId}
-                      onChange={(e) => handleChange(row.id, "datasetId", e.target.value)}
+                      value={row.dataset_id}
+                      onChange={(e) => handleChange(row.id, "dataset_id", e.target.value)}
                       variant="standard"
                     />
                   </TableCell>
                   <TableCell>
                     <TextField
-                      value={row.traitID}
-                      onChange={(e) => handleChange(row.id, "traitID", e.target.value)}
+                      value={row.trait_id}
+                      onChange={(e) => handleChange(row.id, "trait_id", e.target.value)}
                       variant="standard"
                     />
                   </TableCell>

@@ -57,8 +57,61 @@ def align(variable: NormalizedVariable):
 
 @app.post("/uploadfile")
 async def create_upload_file(file: UploadFile):
-	if file.content_type == "application/pdf":
-		bytes = await file.read()
-		result = parse_file(bytes)
-		return {"variables": result}
-	return {"variables": []}
+    return {
+		"variables":[
+        {
+            "trait_id": "VIGOUR",
+            "description": "VIGOUR",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "Shoot_Lenght",
+            "description": "Shoot Lenght",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "Leaf_Area",
+            "description": "Leaf Area",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "SPAD",
+            "description": "SPAD",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "Fresh_Aerial_Weight",
+            "description": "Fresh Aerial Weight",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "Fresh_Root_Weight",
+            "description": "Fresh Root Weight",
+            "trait": None,
+            "method": None,
+            "unit": None
+        },
+        {
+            "trait_id": "Bud_Break",
+            "description": "Bud Break",
+            "trait": None,
+            "method": None,
+            "unit": None
+        }
+    ]
+	}
+	# if file.content_type == "application/pdf":
+	# 	bytes = await file.read()
+	# 	result = parse_file(bytes)
+	# 	return {"variables": result}
+	# return {"variables": []}

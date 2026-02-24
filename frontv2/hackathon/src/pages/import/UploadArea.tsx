@@ -1,18 +1,34 @@
 import React from "react";
 import { Card, CardContent, Stack, Typography, Button } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { useAtom } from "jotai";
-import { ApiHelper, ImportHelper } from "../../atom";
+import { getDefaultStore, useAtom } from "jotai";
+import { ApiHelper, ImportHelper, variableImportAtom } from "../../atom";
 
 export default function UploadArea() {
   const [, setFile] = useAtom(ImportHelper.fileAtom());
-const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       setFile(e.target.files[0]);
       setIsLoading(true);
-      await ApiHelper.postFile(e.target.files?.[0]).then(() => {console.log("upload complete")}).finally(() => setIsLoading(false));
-
+      await ApiHelper.postFile(e.target.files?.[0])
+        .then((result) => {
+          console.log(result.data.variables);
+          getDefaultStore().set(
+            variableImportAtom,
+            result.data.variables.map((elt) => ({
+              description: elt.description ?? "",
+              method: elt.method ?? "",
+              trait_id: elt.trait_id ?? "",
+              units: elt.units ?? "",
+              data_import_id: crypto.randomUUID(),
+              dataset_id: e.target.files![0].name,
+              trait: elt.trait ?? "",
+            })),
+          );
+          console.log("upload complete");
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 

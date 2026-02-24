@@ -1,8 +1,16 @@
-type TDataImport = {
+type TNormalizedVariable = {
     data_import_id:string;
     dataset_id:string;
     trait_id:string;
     description:string;
+    method:string;
+    units:string;
+    trait:string;
+}
+type TNormalizedVariableAPI = {
+    trait_id:string;
+    description:string;
+    trait:string;
     method:string;
     units:string;
 }

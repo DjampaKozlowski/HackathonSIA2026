@@ -22,7 +22,7 @@ export default function Sidebar() {
       }}
     >
       <Typography variant="h6" fontWeight={700} color="success.main" mb={4}>
-        🌿 AgriSchema
+        🌿 HarmonIAgro
       </Typography>
 
       <List>
