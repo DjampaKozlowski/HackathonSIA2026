@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Box,
     Typography,
@@ -12,7 +12,7 @@ import StorageOutlinedIcon from "@mui/icons-material/StorageOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAtom } from "jotai";
-import { ImportHelper, SemantiqueMappingHelper, referencialVariablesAtom } from "../../atom";
+import { ApiHelper, ImportHelper, SemantiqueMappingHelper, referencialVariablesAtom } from "../../atom";
 
 function Pill({
     icon,
@@ -126,19 +126,19 @@ function MappingLines({ imports, refs, mappings, threshold }: MappingLinesProps)
     const rowHeight = 80; // must roughly match pill height + spacing
 
     const importIndex = new Map<string, number>();
-    imports.forEach((imp, index) => importIndex.set(imp.dataImportId, index));
+    imports.forEach((imp, index) => importIndex.set(imp.data_import_id, index));
 
     const refIndex = new Map<string, number>();
-    refs.forEach((ref, index) => refIndex.set(ref.refId, index));
+    refs.forEach((ref, index) => refIndex.set(ref.ref_id, index));
 
     const validMappings = mappings.filter((m) => {
-        const hasImport = importIndex.has(m.dataImportId);
-        const hasRef = refIndex.has(m.refId);
+        const hasImport = importIndex.has(m.data_import_id);
+        const hasRef = refIndex.has(m.ref_id);
         if (!hasImport || !hasRef) {
             console.warn("Mapping ignored because it references missing entities", {
                 mappingId: m.id,
-                dataImportId: m.dataImportId,
-                refId: m.refId,
+                dataImportId: m.data_import_id,
+                refId: m.ref_id,
             });
         }
         return hasImport && hasRef;
@@ -151,8 +151,8 @@ function MappingLines({ imports, refs, mappings, threshold }: MappingLinesProps)
         <Box sx={{ position: "relative", height }}>
             <svg width="100%" height={height} style={{ overflow: "visible" }}>
                 {validMappings.map((m) => {
-                    const fromIndex = importIndex.get(m.dataImportId)!;
-                    const toIndex = refIndex.get(m.refId)!;
+                    const fromIndex = importIndex.get(m.data_import_id)!;
+                    const toIndex = refIndex.get(m.ref_id)!;
                     const y1 = (fromIndex + 0.5) * rowHeight;
                     const y2 = (toIndex + 0.5) * rowHeight;
                     const isAbove = m.score >= threshold;
@@ -183,16 +183,16 @@ export default function SemantiqueMappingPage() {
     const [referencialVariables] = useAtom(referencialVariablesAtom);
 
     const validMappings = React.useMemo(() => {
-        const importIds = new Set(imports.map((i) => i.dataImportId));
-        const refIds = new Set(referencialVariables.map((r) => r.refId));
+        const importIds = new Set(imports.map((i) => i.data_import_id));
+        const refIds = new Set(referencialVariables.map((r) => r.ref_id));
 
         return mappings.filter((m) => {
-            const ok = importIds.has(m.dataImportId) && refIds.has(m.refId);
+            const ok = importIds.has(m.data_import_id) && refIds.has(m.ref_id);
             if (!ok) {
                 console.warn("Mapping ignored because it references missing entities", {
                     mappingId: m.id,
-                    dataImportId: m.dataImportId,
-                    refId: m.refId,
+                    dataImportId: m.data_import_id,
+                    refId: m.ref_id,
                 });
             }
             return ok;
@@ -202,9 +202,9 @@ export default function SemantiqueMappingPage() {
     const bestScoreByImportId = React.useMemo(() => {
         const map = new Map<string, number>();
         validMappings.forEach((m) => {
-            const prev = map.get(m.dataImportId) ?? 0;
+            const prev = map.get(m.data_import_id) ?? 0;
             if (m.score > prev) {
-                map.set(m.dataImportId, m.score);
+                map.set(m.data_import_id, m.score);
             }
         });
         return map;
@@ -212,7 +212,7 @@ export default function SemantiqueMappingPage() {
 
     const mappedRefIds = React.useMemo(() => {
         const s = new Set<string>();
-        validMappings.forEach((m) => s.add(m.refId));
+        validMappings.forEach((m) => s.add(m.ref_id));
         return s;
     }, [validMappings]);
 
@@ -220,7 +220,7 @@ export default function SemantiqueMappingPage() {
         const mapped: TReferencialVariable[] = [];
         const unmapped: TReferencialVariable[] = [];
         referencialVariables.forEach((ref) => {
-            if (mappedRefIds.has(ref.refId)) mapped.push(ref);
+            if (mappedRefIds.has(ref.ref_id)) mapped.push(ref);
             else unmapped.push(ref);
         });
         return [...mapped, ...unmapped];
@@ -228,9 +228,13 @@ export default function SemantiqueMappingPage() {
 
     const handleRemoveForImport = (dataImportId: string) => {
         SemantiqueMappingHelper.setMappings(
-            mappings.filter((m) => m.dataImportId !== dataImportId)
+            mappings.filter((m) => m.data_import_id !== dataImportId)
         );
     };
+
+    useEffect(() => {
+        ApiHelper.loadReference();
+    }, []);
 
     return (
         <Box sx={{ width: "100%" }}>
@@ -311,12 +315,12 @@ export default function SemantiqueMappingPage() {
                     <Stack spacing={2}>
                         {imports.map((imp) => (
                             <Pill
-                                key={imp.dataImportId}
+                                key={imp.data_import_id}
                                 variant="left"
                                 icon={<StorageOutlinedIcon fontSize="small" />}
-                                label={imp.traitID || imp.dataImportId}
-                                score={bestScoreByImportId.get(imp.dataImportId)}
-                                onRemove={() => handleRemoveForImport(imp.dataImportId)}
+                                label={imp.trait_id || imp.data_import_id}
+                                score={bestScoreByImportId.get(imp.data_import_id)}
+                                onRemove={() => handleRemoveForImport(imp.data_import_id)}
                             />
                         ))}
                     </Stack>
@@ -331,7 +335,7 @@ export default function SemantiqueMappingPage() {
                     <Stack spacing={2}>
                         {orderedRefs.map((ref) => (
                             <Pill
-                                key={ref.refId}
+                                key={ref.ref_id}
                                 variant="right"
                                 icon={<CategoryOutlinedIcon fontSize="small" />}
                                 label={ref.name}

@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
 from src.processing.referential import load_referential
 from src.classes import NormalizedVariable
 
 app = FastAPI(title="HackathonSIA2026 API")
+
+# Allow all CORS for now (adjust in production)
+app.add_middleware(
+	CORSMiddleware,
+	allow_origins=["*"],
+	allow_credentials=True,
+	allow_methods=["*"],
+	allow_headers=["*"],
+)
 
 @app.get("/core")
 def get_refs():
@@ -45,5 +55,5 @@ def align(variable: NormalizedVariable):
 
 @app.post("/uploadfile")
 async def create_upload_file(file: UploadFile):
-    
+    print(f"Received file: {file.filename}")
     return {"filename": file.filename}

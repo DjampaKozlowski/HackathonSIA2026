@@ -2,14 +2,17 @@ import React from "react";
 import { Card, CardContent, Stack, Typography, Button } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useAtom } from "jotai";
-import { ImportHelper } from "../../atom";
+import { ApiHelper, ImportHelper } from "../../atom";
 
 export default function UploadArea() {
   const [, setFile] = useAtom(ImportHelper.fileAtom());
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const [isLoading, setIsLoading] = React.useState(false);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
       setFile(e.target.files[0]);
+      setIsLoading(true);
+      await ApiHelper.postFile(e.target.files?.[0]).then(() => {console.log("upload complete")}).finally(() => setIsLoading(false));
+
     }
   };
 
@@ -28,7 +31,7 @@ export default function UploadArea() {
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-            Supports Excel (.xlsx) and PDF
+            Supports Excel (.xlsx) and PDF {isLoading ? " - Uploading..." : ""}
           </Typography>
 
           <Button variant="contained" sx={{ borderRadius: 3 }}>

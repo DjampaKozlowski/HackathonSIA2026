@@ -1,14 +1,14 @@
 type TDataImport = {
-    dataImportId:string;
-    datasetId:string;
-    traitID:string;
+    data_import_id:string;
+    dataset_id:string;
+    trait_id:string;
     description:string;
     method:string;
     units:string;
 }
 
 type TReferencialVariable = {
-    refId:string;
+    ref_id:string;
     name:string;
     units:string[];
     methods:string[];
@@ -16,10 +16,16 @@ type TReferencialVariable = {
     aliases:string[];
 }
 
+type TMappingAPI = {
+    ref_id:string;
+    data_import_id:string;
+    score:number;
+    why_match:string;
+}
 type TMapping = {
     id:string;
-    refId:string;
-    dataImportId:string;
+    ref_id:string;
+    data_import_id:string;
     score:number;
-    whyMatch:string;
+    why_match:string;
 }
