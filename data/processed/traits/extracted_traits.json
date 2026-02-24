@@ -1,0 +1,32 @@
+{
+  "traits": [
+    {
+      "trait_id": "VIGOUR",
+      "description": "VIGOUR"
+    },
+    {
+      "trait_id": "Shoot_Lenght",
+      "description": "Shoot Lenght"
+    },
+    {
+      "trait_id": "Leaf_Area",
+      "description": "Leaf Area"
+    },
+    {
+      "trait_id": "SPAD",
+      "description": "SPAD"
+    },
+    {
+      "trait_id": "Fresh_Aerial_Weight",
+      "description": "Fresh Aerial Weight"
+    },
+    {
+      "trait_id": "Fresh_Root_Weight",
+      "description": "Fresh Root Weight"
+    },
+    {
+      "trait_id": "Bud_Break",
+      "description": "Bud Break"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "trait_id": "VIGOUR",
+    "description": "VIGOUR",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "Shoot_Lenght",
+    "description": "Shoot Lenght",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "Leaf_Area",
+    "description": "Leaf Area",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "SPAD",
+    "description": "SPAD",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "Fresh_Aerial_Weight",
+    "description": "Fresh Aerial Weight",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "Fresh_Root_Weight",
+    "description": "Fresh Root Weight",
+    "trait": null,
+    "method": null,
+    "unit": null
+  },
+  {
+    "trait_id": "Bud_Break",
+    "description": "Bud Break",
+    "trait": null,
+    "method": null,
+    "unit": null
+  }
+]
