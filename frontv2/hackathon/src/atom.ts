@@ -101,6 +101,6 @@ export class ApiHelper {
   }
 
   static async getMapping(variable: TNormalizedVariable) {
-    return axios.post<TMappingAPI[]>(`${HOST}/align`, variable);
+    return axios.post<{items:TMappingAPI[]}>(`${HOST}/align`, {...variable,aliases:""});
   }
 }

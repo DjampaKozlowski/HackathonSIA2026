@@ -28,7 +28,7 @@ export default function VariableDefinitionsTable() {
       trait_id: "",
       description: "",
       method: "",
-      units: "",
+      unit: "",
       dataset_id: "",
     });
   };
@@ -103,8 +103,8 @@ export default function VariableDefinitionsTable() {
                   </TableCell>
                   <TableCell>
                     <TextField
-                      value={row.units}
-                      onChange={(e) => handleChange(row.id, "units", e.target.value)}
+                      value={row.unit}
+                      onChange={(e) => handleChange(row.id, "unit", e.target.value)}
                       variant="standard"
                     />
                   </TableCell>

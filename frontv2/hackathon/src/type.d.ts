@@ -4,15 +4,16 @@ type TNormalizedVariable = {
     trait_id:string;
     description:string;
     method:string;
-    units:string;
+    unit:string;
     trait:string;
+
 }
 type TNormalizedVariableAPI = {
     trait_id:string;
     description:string;
     trait:string;
     method:string;
-    units:string;
+    unit:string;
 }
 
 type TReferencialVariable = {

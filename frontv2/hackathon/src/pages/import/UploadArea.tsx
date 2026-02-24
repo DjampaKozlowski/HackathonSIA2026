@@ -20,10 +20,11 @@ export default function UploadArea() {
               description: elt.description ?? "",
               method: elt.method ?? "",
               trait_id: elt.trait_id ?? "",
-              units: elt.units ?? "",
+              unit: elt.unit ?? "",
               data_import_id: crypto.randomUUID(),
               dataset_id: e.target.files![0].name,
               trait: elt.trait ?? "",
+              aliases:"",
             })),
           );
           console.log("upload complete");

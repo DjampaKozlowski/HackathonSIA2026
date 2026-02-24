@@ -143,7 +143,7 @@ function MappingLines({
   threshold,
 }: MappingLinesProps) {
   const theme = useTheme();
-  const rowHeight = 80; // must roughly match pill height + spacing
+  const rowHeight = 73; // must roughly match pill height + spacing
 
   const importIndex = new Map<string, number>();
   imports.forEach((imp, index) => importIndex.set(imp.data_import_id, index));
@@ -260,11 +260,12 @@ export default function SemantiqueMappingPage() {
   useEffect(() => {
     async function load() {
       for (const v of getDefaultStore().get(variableImportAtom)) {
-        await ApiHelper.getMapping(v).then((res) => {
-          SemantiqueMappingHelper.addMappings(
-            res.data.map((elt) => ({ ...elt, id: crypto.randomUUID() })),
-          );
-        });
+        console.log("Loading mappings for", v.data_import_id);
+        const res = await ApiHelper.getMapping(v);
+        console.log(res.data);
+        SemantiqueMappingHelper.addMappings(
+          res.data.items.map((elt) => ({ ...elt, id: crypto.randomUUID(),data_import_id:v.data_import_id })),
+        );
       }
     }
     load();

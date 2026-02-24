@@ -51,7 +51,7 @@ def align(variable: NormalizedVariable):
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=f"alignment error: {e}")
 
-	return [a.model_dump() for a in alignments]
+	return alignments
 
 
 
