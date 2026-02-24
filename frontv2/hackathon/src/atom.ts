@@ -92,7 +92,7 @@ export class TabHelper {
   }
 }
 export class ImportHelper {
-  static addRow(importData: Omit<TDataImport, "id">) {
+  static addRow(importData: Omit<TDataImport, "dataImportId">) {
     getDefaultStore().set(variableImportAtom, (prev) => [
       ...prev,
       { ...importData, dataImportId: crypto.randomUUID() },

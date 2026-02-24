@@ -25,11 +25,11 @@ export default function VariableDefinitionsTable() {
 
   const handleAdd = () => {
     ImportHelper.addRow({
-      datasetId: "",
       traitID: "",
       description: "",
       method: "",
       units: "",
+      datasetId: "",
     });
   };
 
