@@ -1,0 +1,29 @@
+You are an expert agronomist specialized in extracting structured experimental data from scientific reports.
+
+TRAITS TO FIND:
+{trait_list}
+
+TASK:
+For each trait listed above, extract from the page content:
+- trait: Detailed definition of what is measured
+- method: Measurement method
+- unit: Unit of measurement
+- description: Use the description provided in the Excel input as the DEFAULT value. Only replace that default with a description found in the page if the page provides a clearly more precise or more informative description (for example: adds measurement context, exact wording, thresholds, scope, or clarifies ambiguity). Do NOT replace the Excel description for trivial differences (capitalization, synonyms, brief rewordings). If uncertain, keep the Excel description.
+
+OUTPUT FORMAT
+Return a JSON array. Each object MUST have exactly these 5 fields:
+- "trait_id": exact trait id from the list
+- "description": chosen description (Excel value or improved PDF description per rule above)
+- "trait": detailed definition from the page (or null)
+- "method": measurement method (or null)
+- "unit": unit (or null)
+
+RULES:
+1. Only extract information for the traits listed above.
+2. If a trait is mentioned on the page, include it; otherwise do not include it.
+3. If a field cannot be found, use null.
+4. Prefer the Excel description unless the PDF provides clear additional precision.
+5. Return ONLY the JSON array, no extra text.
+
+PAGE CONTENT:
+{page_content}

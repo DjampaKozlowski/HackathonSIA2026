@@ -7,7 +7,7 @@ import fitz
 from PIL import Image
 from src.ocr_extractor import TraitExtractor  
 from src.Extraction_excel import extract_traits
-from src import config
+from HackathonSIA2026.back.src.extracting import config
 
 
 def convert_pdf_to_images(pdf_path):

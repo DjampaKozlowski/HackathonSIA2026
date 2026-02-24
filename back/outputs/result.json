@@ -1,51 +1,37 @@
 [
   {
-    "trait_id": "VIGOUR",
-    "description": "VIGOUR",
-    "trait": "CATIONS 3.1.6 EVALUATION METHODOLOGY. 3.1.7 CALENDAR OF ACTIONS. 3.2. RESULTS AND DISCUSSION, 3.2.1 VIGOR (NOV). 3.2.2 TOTAL VIELD Kg/HA AND GRAMS/1,000 SEEDS 2.2.3 WEIGHT HECTOUITER OF SEEDS 2.2.4 PHYTOTO",
-    "method": null,
-    "unit": null
-  },
-  {
     "trait_id": "Shoot_Lenght",
     "description": "Shoot Lenght",
-    "trait": null,
-    "method": null,
-    "unit": null
+    "trait": "STEM LENGTH",
+    "method": "recorded",
+    "unit": "cm"
+  },
+  {
+    "trait_id": "VIGOUR",
+    "description": "VIGOUR",
+    "trait": "VIGOR (NDVI)",
+    "method": "recorded",
+    "unit": "%"
   },
   {
     "trait_id": "Leaf_Area",
     "description": "Leaf Area",
-    "trait": null,
-    "method": null,
-    "unit": null
-  },
-  {
-    "trait_id": "SPAD",
-    "description": "SPAD",
-    "trait": null,
-    "method": null,
-    "unit": null
+    "trait": "LEAF AREA",
+    "method": "recorded",
+    "unit": "cm2"
   },
   {
     "trait_id": "Fresh_Aerial_Weight",
     "description": "Fresh Aerial Weight",
-    "trait": null,
-    "method": null,
-    "unit": null
+    "trait": "AIR FRESH WEIGHT",
+    "method": "Precision scale",
+    "unit": "g"
   },
   {
     "trait_id": "Fresh_Root_Weight",
     "description": "Fresh Root Weight",
-    "trait": null,
-    "method": null,
-    "unit": null
-  },
-  {
-    "trait_id": "Bud_Break",
-    "description": "Bud Break",
-    "trait": null,
-    "method": null,
-    "unit": null
+    "trait": "ROOT FRESH WEIGHT",
+    "method": "Precision scale",
+    "unit": "g"
   }
 ]
